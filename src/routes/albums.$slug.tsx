@@ -112,7 +112,7 @@ function AlbumPage() {
       <section className="mt-20">
         <h2 className="eyebrow">Inside the album</h2>
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {album.wallpapers.map((wallpaper, i) => (
+          {album.wallpapers.map((wallpaper: Wallpaper, i: number) => (
             <Reveal key={wallpaper.id} delay={(i % 4) * 60}>
               <div className="overflow-hidden shadow-frame">
                 <PreviewTile

@@ -10,11 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as BundleRouteImport } from './routes/bundle'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlbumsSlugRouteImport } from './routes/albums.$slug'
 
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BundleRoute = BundleRouteImport.update({
+  id: '/bundle',
+  path: '/bundle',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -22,31 +35,48 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlbumsSlugRoute = AlbumsSlugRouteImport.update({
+  id: '/albums/$slug',
+  path: '/albums/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bundle': typeof BundleRoute
+  '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
+  '/albums/$slug': typeof AlbumsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bundle': typeof BundleRoute
+  '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
+  '/albums/$slug': typeof AlbumsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bundle': typeof BundleRoute
+  '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
+  '/albums/$slug': typeof AlbumsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/shop'
+  fullPaths: '/' | '/bundle' | '/faq' | '/shop' | '/albums/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/shop'
-  id: '__root__' | '/' | '/shop'
+  to: '/' | '/bundle' | '/faq' | '/shop' | '/albums/$slug'
+  id: '__root__' | '/' | '/bundle' | '/faq' | '/shop' | '/albums/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BundleRoute: typeof BundleRoute
+  FaqRoute: typeof FaqRoute
   ShopRoute: typeof ShopRoute
+  AlbumsSlugRoute: typeof AlbumsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +88,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bundle': {
+      id: '/bundle'
+      path: '/bundle'
+      fullPath: '/bundle'
+      preLoaderRoute: typeof BundleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -65,12 +109,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/albums/$slug': {
+      id: '/albums/$slug'
+      path: '/albums/$slug'
+      fullPath: '/albums/$slug'
+      preLoaderRoute: typeof AlbumsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BundleRoute: BundleRoute,
+  FaqRoute: FaqRoute,
   ShopRoute: ShopRoute,
+  AlbumsSlugRoute: AlbumsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
