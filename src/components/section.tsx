@@ -16,7 +16,8 @@ export function Reveal({
 
   return (
     <Tag
-      ref={ref as React.Ref<HTMLDivElement>}
+      ref={ref as never}
+
       className={cn(
         "transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
         visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
