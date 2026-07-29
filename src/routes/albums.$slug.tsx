@@ -7,7 +7,7 @@ import { PreviewTile } from "@/components/preview-tile";
 import { Reveal } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { brand, formatPrice } from "@/config/brand";
-import { bundle, getAlbumBySlug } from "@/config/products";
+import { bundle, getAlbumBySlug, type Wallpaper } from "@/config/products";
 import { useCart } from "@/lib/cart";
 import { bundleSavingsPercent } from "@/lib/pricing";
 
