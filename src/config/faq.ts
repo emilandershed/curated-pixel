@@ -59,6 +59,7 @@ export const faq: FaqItem[] = [
   {
     id: "contact",
     question: "Something else?",
-    answer: `Write to ${brand.contactEmail} or use the contact form. Replies usually arrive within one working day.`,
+    answer:
+      "Use the contact form and we'll get back to you — replies usually arrive within one working day.",
   },
 ];
