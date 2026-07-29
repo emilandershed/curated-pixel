@@ -81,6 +81,12 @@ function CheckoutPage() {
         immediately after payment.
       </p>
 
+      {cancelled ? (
+        <p className="mt-6 border border-border bg-secondary/50 px-4 py-3 text-sm">
+          Payment was cancelled. Nothing has been charged — your bag is still here.
+        </p>
+      ) : null}
+
       <ul className="mt-10 border-t border-border">
         {lines.map((line) => (
           <li
@@ -105,19 +111,23 @@ function CheckoutPage() {
         <Input
           id="purchase-email"
           type="email"
+          autoComplete="email"
           maxLength={255}
           placeholder="you@example.com"
           className="mt-2"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
         />
       </div>
 
-      <Button size="lg" className="mt-8" disabled>
-        Pay securely
+      <Button size="lg" className="mt-8" onClick={onPay} disabled={submitting}>
+        {submitting ? "Opening secure payment…" : "Pay securely"}
       </Button>
       <p className="mt-3 text-xs text-muted-foreground">
-        Payment provider is being connected. Prices are always confirmed on the server at
-        checkout, never taken from the browser.
+        You'll be taken to Stripe's secure payment page. Prices are always confirmed on the
+        server at checkout, never taken from the browser.
       </p>
+
     </div>
   );
 }
