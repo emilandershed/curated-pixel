@@ -9,12 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as BundleRouteImport } from './routes/bundle'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlbumsSlugRouteImport } from './routes/albums.$slug'
 
+const ThankYouRoute = ThankYouRouteImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
@@ -23,6 +31,16 @@ const ShopRoute = ShopRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BundleRoute = BundleRouteImport.update({
@@ -44,43 +62,87 @@ const AlbumsSlugRoute = AlbumsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bundle': typeof BundleRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
+  '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bundle': typeof BundleRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
+  '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/bundle': typeof BundleRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
+  '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/bundle' | '/faq' | '/shop' | '/albums/$slug'
+  fullPaths:
+    | '/'
+    | '/bundle'
+    | '/checkout'
+    | '/contact'
+    | '/faq'
+    | '/shop'
+    | '/thank-you'
+    | '/albums/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bundle' | '/faq' | '/shop' | '/albums/$slug'
-  id: '__root__' | '/' | '/bundle' | '/faq' | '/shop' | '/albums/$slug'
+  to:
+    | '/'
+    | '/bundle'
+    | '/checkout'
+    | '/contact'
+    | '/faq'
+    | '/shop'
+    | '/thank-you'
+    | '/albums/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/bundle'
+    | '/checkout'
+    | '/contact'
+    | '/faq'
+    | '/shop'
+    | '/thank-you'
+    | '/albums/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BundleRoute: typeof BundleRoute
+  CheckoutRoute: typeof CheckoutRoute
+  ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   ShopRoute: typeof ShopRoute
+  ThankYouRoute: typeof ThankYouRoute
   AlbumsSlugRoute: typeof AlbumsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
@@ -93,6 +155,20 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bundle': {
@@ -122,8 +198,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BundleRoute: BundleRoute,
+  CheckoutRoute: CheckoutRoute,
+  ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   ShopRoute: ShopRoute,
+  ThankYouRoute: ThankYouRoute,
   AlbumsSlugRoute: AlbumsSlugRoute,
 }
 export const routeTree = rootRouteImport
