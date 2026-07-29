@@ -1,13 +1,20 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute, useSearch } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { useState } from "react";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { brand, formatPrice } from "@/config/brand";
 import { useCart } from "@/lib/cart";
+import { createCheckoutSession } from "@/lib/checkout.functions";
 import { resolveLinePriceCents, resolveLineTitle } from "@/lib/pricing";
 
 export const Route = createFileRoute("/checkout")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    cancelled: search.cancelled === "1" || search.cancelled === 1 ? true : undefined,
+  }),
   head: () => ({
     meta: [
       { title: `Checkout — ${brand.name}` },
@@ -25,6 +32,35 @@ export const Route = createFileRoute("/checkout")({
 
 function CheckoutPage() {
   const { lines, totalCents, hydrated } = useCart();
+  const { cancelled } = useSearch({ from: "/checkout" });
+  const startCheckout = useServerFn(createCheckoutSession);
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  const emailLooksValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const onPay = async () => {
+    if (!emailLooksValid) {
+      toast.error("Enter the email address your download links should go to.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const { url } = await startCheckout({
+        data: {
+          email,
+          lines: lines.map((l) => ({ id: l.id, kind: l.kind })),
+          origin: window.location.origin,
+        },
+      });
+      window.location.href = url;
+    } catch (error) {
+      console.error(error);
+      toast.error("We couldn't start the payment. Please try again in a moment.");
+      setSubmitting(false);
+    }
+  };
+
 
   if (hydrated && lines.length === 0) {
     return (
@@ -44,6 +80,12 @@ function CheckoutPage() {
         Guest checkout — no account required. Your download links are emailed and shown
         immediately after payment.
       </p>
+
+      {cancelled ? (
+        <p className="mt-6 border border-border bg-secondary/50 px-4 py-3 text-sm">
+          Payment was cancelled. Nothing has been charged — your bag is still here.
+        </p>
+      ) : null}
 
       <ul className="mt-10 border-t border-border">
         {lines.map((line) => (
@@ -69,19 +111,23 @@ function CheckoutPage() {
         <Input
           id="purchase-email"
           type="email"
+          autoComplete="email"
           maxLength={255}
           placeholder="you@example.com"
           className="mt-2"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
         />
       </div>
 
-      <Button size="lg" className="mt-8" disabled>
-        Pay securely
+      <Button size="lg" className="mt-8" onClick={onPay} disabled={submitting}>
+        {submitting ? "Opening secure payment…" : "Pay securely"}
       </Button>
       <p className="mt-3 text-xs text-muted-foreground">
-        Payment provider is being connected. Prices are always confirmed on the server at
-        checkout, never taken from the browser.
+        You'll be taken to Stripe's secure payment page. Prices are always confirmed on the
+        server at checkout, never taken from the browser.
       </p>
+
     </div>
   );
 }
