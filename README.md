@@ -1,8 +1,8 @@
 # Frame & Form
 
-Build a premium e-commerce website for Emil Frame, a digital wallpaper store selling curated wallpaper collections for iPhone and MacBook (every wallpaper delivered in both mobile 9:16 and desktop 16:9 format).
+Build a premium e-commerce website for Faint Line, a digital wallpaper store selling curated wallpaper collections for iPhone and MacBook (every wallpaper delivered in both mobile 9:16 and desktop 16:9 format).
 
-Note: The brand name "Emil Frame" is provisional — build the site so the brand name/logo is defined in ONE central config/constant, making it trivial to rename later.
+Note: The brand name "Faint Line" is provisional — build the site so the brand name/logo is defined in ONE central config/constant, making it trivial to rename later.
 
 References (match and exceed this quality)
 

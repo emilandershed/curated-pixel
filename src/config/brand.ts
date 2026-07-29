@@ -3,8 +3,8 @@
  * Rename the store by editing this file only.
  */
 export const brand = {
-  name: "Emil Frame",
-  shortName: "Frame",
+  name: "Faint Line",
+  shortName: "Faint",
   tagline: "Wallpapers, framed with intent.",
   description:
     "Curated digital wallpaper collections for iPhone and MacBook. Every wallpaper delivered in both 9:16 and 16:9, at full resolution.",
@@ -12,7 +12,7 @@ export const brand = {
   currencySymbol: "€",
   locale: "en-IE",
   legal: {
-    entity: "Emil Frame (sole trader)",
+    entity: "Faint Line (sole trader)",
     address: "Address placeholder, Sweden",
     vatNumber: "VAT number placeholder",
   },
