@@ -264,3 +264,11 @@ export const getAlbumBySlug = (slug: string) => albums.find((a) => a.slug === sl
 export const featuredAlbums = () => albums.filter((a) => a.featured);
 
 export const totalWallpaperCount = albums.reduce((n, a) => n + a.wallpaperCount, 0);
+
+/**
+ * Private storage key for an album's full-resolution archive (both formats).
+ * Lives in a private bucket and is only ever reached through a signed URL
+ * issued after a verified payment — never referenced from a page.
+ */
+export const albumDownloadKey = (albumId: string) => `albums/${albumId}/${albumId}.zip`;
+
