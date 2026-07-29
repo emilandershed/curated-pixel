@@ -1,4 +1,4 @@
-import { brand, DOWNLOAD_TOKEN_VALID_DAYS } from "./brand";
+import { DOWNLOAD_TOKEN_VALID_DAYS } from "./brand";
 
 export type FaqItem = { id: string; question: string; answer: string };
 
