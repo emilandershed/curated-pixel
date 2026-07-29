@@ -16,6 +16,9 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as BundleRouteImport } from './routes/bundle'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LegalTermsRouteImport } from './routes/legal/terms'
+import { Route as LegalRefundsRouteImport } from './routes/legal/refunds'
+import { Route as LegalPrivacyRouteImport } from './routes/legal/privacy'
 import { Route as AlbumsSlugRouteImport } from './routes/albums.$slug'
 
 const ThankYouRoute = ThankYouRouteImport.update({
@@ -53,6 +56,21 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalTermsRoute = LegalTermsRouteImport.update({
+  id: '/legal/terms',
+  path: '/legal/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRefundsRoute = LegalRefundsRouteImport.update({
+  id: '/legal/refunds',
+  path: '/legal/refunds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
+  id: '/legal/privacy',
+  path: '/legal/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AlbumsSlugRoute = AlbumsSlugRouteImport.update({
   id: '/albums/$slug',
   path: '/albums/$slug',
@@ -68,6 +86,9 @@ export interface FileRoutesByFullPath {
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
+  '/legal/terms': typeof LegalTermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +99,9 @@ export interface FileRoutesByTo {
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
+  '/legal/terms': typeof LegalTermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +113,9 @@ export interface FileRoutesById {
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
+  '/legal/terms': typeof LegalTermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +128,9 @@ export interface FileRouteTypes {
     | '/shop'
     | '/thank-you'
     | '/albums/$slug'
+    | '/legal/privacy'
+    | '/legal/refunds'
+    | '/legal/terms'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +141,9 @@ export interface FileRouteTypes {
     | '/shop'
     | '/thank-you'
     | '/albums/$slug'
+    | '/legal/privacy'
+    | '/legal/refunds'
+    | '/legal/terms'
   id:
     | '__root__'
     | '/'
@@ -121,6 +154,9 @@ export interface FileRouteTypes {
     | '/shop'
     | '/thank-you'
     | '/albums/$slug'
+    | '/legal/privacy'
+    | '/legal/refunds'
+    | '/legal/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +168,9 @@ export interface RootRouteChildren {
   ShopRoute: typeof ShopRoute
   ThankYouRoute: typeof ThankYouRoute
   AlbumsSlugRoute: typeof AlbumsSlugRoute
+  LegalPrivacyRoute: typeof LegalPrivacyRoute
+  LegalRefundsRoute: typeof LegalRefundsRoute
+  LegalTermsRoute: typeof LegalTermsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -185,6 +224,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/terms': {
+      id: '/legal/terms'
+      path: '/legal/terms'
+      fullPath: '/legal/terms'
+      preLoaderRoute: typeof LegalTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/refunds': {
+      id: '/legal/refunds'
+      path: '/legal/refunds'
+      fullPath: '/legal/refunds'
+      preLoaderRoute: typeof LegalRefundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/privacy': {
+      id: '/legal/privacy'
+      path: '/legal/privacy'
+      fullPath: '/legal/privacy'
+      preLoaderRoute: typeof LegalPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/albums/$slug': {
       id: '/albums/$slug'
       path: '/albums/$slug'
@@ -204,7 +264,20 @@ const rootRouteChildren: RootRouteChildren = {
   ShopRoute: ShopRoute,
   ThankYouRoute: ThankYouRoute,
   AlbumsSlugRoute: AlbumsSlugRoute,
+  LegalPrivacyRoute: LegalPrivacyRoute,
+  LegalRefundsRoute: LegalRefundsRoute,
+  LegalTermsRoute: LegalTermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
