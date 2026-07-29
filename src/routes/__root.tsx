@@ -89,14 +89,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: brand.name },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Faint Line" },
-      { property: "og:title", content: "Faint Line" },
-      { name: "twitter:title", content: "Faint Line" },
-      { name: "description", content: "Frame & Form is a premium e-commerce website for digital wallpaper collections." },
-      { property: "og:description", content: "Frame & Form is a premium e-commerce website for digital wallpaper collections." },
-      { name: "twitter:description", content: "Frame & Form is a premium e-commerce website for digital wallpaper collections." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/be1dd990-27fb-4fd9-b8d4-5ed8ad2cdf49/id-preview-a2a3eda3--6042d397-bbbd-4aea-a731-b289db526b5b.lovable.app-1785347847949.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/be1dd990-27fb-4fd9-b8d4-5ed8ad2cdf49/id-preview-a2a3eda3--6042d397-bbbd-4aea-a731-b289db526b5b.lovable.app-1785347847949.png" },
+      { property: "og:title", content: `${brand.name} — Digital wallpapers for iPhone & MacBook` },
+      { name: "twitter:title", content: `${brand.name} — Digital wallpapers for iPhone & MacBook` },
+      { property: "og:description", content: brand.description },
+      { name: "twitter:description", content: brand.description },
     ],
     links: [
       {

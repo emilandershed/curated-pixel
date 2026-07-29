@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { createAuthEmailHandler } from '@lovable.dev/email-js'
 import { createFileRoute } from '@tanstack/react-router'
+import { brand } from '@/config/brand'
 import { SignupEmail } from '@/lib/email-templates/signup'
 import { InviteEmail } from '@/lib/email-templates/invite'
 import { MagicLinkEmail } from '@/lib/email-templates/magic-link'
@@ -9,7 +10,7 @@ import { EmailChangeEmail } from '@/lib/email-templates/email-change'
 import { ReauthenticationEmail } from '@/lib/email-templates/reauthentication'
 
 // Configuration
-const SITE_NAME = "curated-pixel"
+const SITE_NAME = brand.name
 const SENDER_DOMAIN = "notify.faintline.shop"
 const ROOT_DOMAIN = "faintline.shop"
 const FROM_DOMAIN = "notify.faintline.shop"
