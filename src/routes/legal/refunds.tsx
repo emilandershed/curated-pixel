@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { SectionHeading } from "@/components/section";
 import { brand } from "@/config/brand";
@@ -46,7 +46,10 @@ function Page() {
         ))}
       </div>
       <p className="mt-16 text-xs text-muted-foreground">
-        {brand.legal.entity} · {brand.legal.address} · {brand.contactEmail}
+        {brand.legal.entity} · {brand.legal.address} ·{" "}
+        <Link to="/contact" className="underline hover:text-foreground">
+          Contact form
+        </Link>
       </p>
     </div>
   );
