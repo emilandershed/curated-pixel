@@ -45,7 +45,7 @@ function ContactPage() {
       <SectionHeading
         eyebrow="Support"
         title="Get in touch."
-        intro={`Write to ${brand.contactEmail} or use the form. Replies usually arrive within one working day.`}
+        intro="Send us a message with the form below. Replies usually arrive within one working day."
       />
 
       <form

@@ -8,8 +8,6 @@ export const brand = {
   tagline: "Wallpapers, framed with intent.",
   description:
     "Curated digital wallpaper collections for iPhone and MacBook. Every wallpaper delivered in both 9:16 and 16:9, at full resolution.",
-  contactEmail: "hello@emilframe.com",
-  supportEmail: "support@emilframe.com",
   currency: "EUR",
   currencySymbol: "€",
   locale: "en-IE",
