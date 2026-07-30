@@ -40,6 +40,9 @@ export type Album = {
 
 import tourKit01 from "@/assets/tour-kit-01.jpg.asset.json";
 import tourKit02 from "@/assets/tour-kit-02.jpg.asset.json";
+import tourKit03 from "@/assets/tour-kit-03.jpg.asset.json";
+import tourKit04 from "@/assets/tour-kit-04.jpg.asset.json";
+import tourKit05 from "@/assets/tour-kit-05.jpg.asset.json";
 
 /**
  * Real, delivered preview art keyed by `${albumId}-${index}`.
@@ -48,6 +51,9 @@ import tourKit02 from "@/assets/tour-kit-02.jpg.asset.json";
 const previewOverrides: Record<string, string> = {
   "tour-kit-1": tourKit01.url,
   "tour-kit-2": tourKit02.url,
+  "tour-kit-3": tourKit03.url,
+  "tour-kit-4": tourKit04.url,
+  "tour-kit-5": tourKit05.url,
 };
 
 const makeWallpapers = (
