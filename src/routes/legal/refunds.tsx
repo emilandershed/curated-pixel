@@ -87,8 +87,7 @@ function Page() {
         ))}
       </div>
       <p className="mt-16 text-xs leading-relaxed text-muted-foreground">
-        {brand.legal.entity} · {brand.legal.address} · Org. no. / VAT:{" "}
-        {brand.legal.vatNumber}
+        {brand.legal.entity} · {brand.legal.address}
         <br />
         <Link to="/contact" className="underline hover:text-foreground">
           Contact form
