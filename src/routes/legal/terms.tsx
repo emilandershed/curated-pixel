@@ -25,7 +25,7 @@ const sections: { heading: string; body: string[] }[] = [
   {
     heading: "1. The seller",
     body: [
-      `These terms govern all purchases from ${brand.name}, operated by ${brand.legal.entity}, a sole trader (enskild firma) registered in Sweden. Registered address and org./VAT number are stated at the foot of this page. Swedish law applies, without prejudice to the mandatory consumer protections of your country of residence.`,
+      `These terms govern all purchases from ${brand.name}, operated by ${brand.legal.entity}, trading as a private individual based in Sweden. Contact details are at the foot of this page. Swedish law applies, without prejudice to the mandatory consumer protections of your country of residence.`,
     ],
   },
   {
@@ -118,8 +118,7 @@ function Page() {
         ))}
       </div>
       <p className="mt-16 text-xs leading-relaxed text-muted-foreground">
-        {brand.legal.entity} · {brand.legal.address} · Org. no. / VAT:{" "}
-        {brand.legal.vatNumber}
+        {brand.legal.entity} · {brand.legal.address}
         <br />
         <Link to="/contact" className="underline hover:text-foreground">
           Contact form
