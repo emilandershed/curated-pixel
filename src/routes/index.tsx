@@ -21,7 +21,7 @@ import { BUNDLE_AVAILABLE, albums, bundle, featuredAlbums, totalWallpaperCount }
 import { bundleSavingsCents, bundleSavingsPercent } from "@/lib/pricing";
 
 const title = `${brand.name} — Digital wallpapers for iPhone & MacBook`;
-const description = `${totalWallpaperCount} curated wallpapers across ${albums.length} albums. Every frame delivered in both 9:16 and 16:9, at full resolution, instantly after purchase.`;
+const description = `${totalWallpaperCount} curated wallpapers across ${albums.length} ${albums.length === 1 ? "album" : "albums"}. Every frame delivered in both 9:16 and 16:9, at full resolution, instantly after purchase.`;
 
 export const Route = createFileRoute("/")({
   head: () => ({

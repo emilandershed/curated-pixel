@@ -13,11 +13,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { brand, formatPrice } from "@/config/brand";
-import { albums, bundle, totalWallpaperCount } from "@/config/products";
+import { BUNDLE_AVAILABLE, albums, bundle, totalWallpaperCount } from "@/config/products";
 import { bundleSavingsPercent } from "@/lib/pricing";
 
 const title = `Shop all wallpaper albums — ${brand.name}`;
-const description = `Browse ${albums.length} curated wallpaper albums and ${totalWallpaperCount} frames, each delivered in iPhone 9:16 and MacBook 16:9 format.`;
+const description = `Browse ${albums.length} curated wallpaper ${albums.length === 1 ? "album" : "albums"} and ${totalWallpaperCount} frames, each delivered in iPhone 9:16 and MacBook 16:9 format.`;
 
 export const Route = createFileRoute("/shop")({
   head: () => ({
@@ -56,12 +56,14 @@ function Shop() {
     <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
       <SectionHeading
         eyebrow="The collection"
-        title="Every album."
-        intro={`${albums.length} albums, ${totalWallpaperCount} wallpapers. Each purchase includes both the iPhone and MacBook format.`}
+        title={albums.length === 1 ? "The collection." : "Every album."}
+        intro={`${albums.length} ${albums.length === 1 ? "album" : "albums"}, ${totalWallpaperCount} wallpapers. Each purchase includes both the iPhone and MacBook format.`}
       />
 
       <div className="mt-10 flex items-center justify-between gap-4 border-y border-border py-4">
-        <p className="text-sm text-muted-foreground">{albums.length} albums</p>
+        <p className="text-sm text-muted-foreground">
+          {albums.length} {albums.length === 1 ? "album" : "albums"}
+        </p>
         <Select value={sort} onValueChange={(v) => setSort(v as SortKey)}>
           <SelectTrigger className="w-[190px]" aria-label="Sort albums">
             <SelectValue />
@@ -76,6 +78,7 @@ function Shop() {
       </div>
 
       {/* Bundle card */}
+      {BUNDLE_AVAILABLE && (
       <Reveal className="mt-12">
         <div className="grid items-center gap-8 border border-border bg-secondary/40 p-6 sm:grid-cols-[1fr_1.1fr] sm:p-8">
           <div>
@@ -103,6 +106,7 @@ function Shop() {
           </div>
         </div>
       </Reveal>
+      )}
 
       <div className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
         {sorted.map((album, i) => (
