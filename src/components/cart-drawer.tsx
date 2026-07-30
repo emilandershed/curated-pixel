@@ -91,7 +91,7 @@ export function CartDrawer() {
               </span>
             </div>
             <Button asChild className="mt-4 w-full" size="lg">
-              <Link to="/checkout" search={{}} onClick={() => setOpen(false)}>
+              <Link to="/checkout" onClick={() => setOpen(false)}>
                 Checkout
               </Link>
             </Button>
