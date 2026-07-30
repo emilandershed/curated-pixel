@@ -101,6 +101,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: brand.description },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/884fba93-2761-4c72-858e-e4860821baac/id-preview-b3b2076d--6042d397-bbbd-4aea-a731-b289db526b5b.lovable.app-1785396152033.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/884fba93-2761-4c72-858e-e4860821baac/id-preview-b3b2076d--6042d397-bbbd-4aea-a731-b289db526b5b.lovable.app-1785396152033.png" },
+      { title: "Faint Line" },
+      { property: "og:title", content: "Faint Line" },
+      { name: "twitter:title", content: "Faint Line" },
+      { name: "description", content: "Frame & Form is a premium e-commerce website for digital wallpaper collections." },
+      { property: "og:description", content: "Frame & Form is a premium e-commerce website for digital wallpaper collections." },
+      { name: "twitter:description", content: "Frame & Form is a premium e-commerce website for digital wallpaper collections." },
     ],
     links: [
       {
