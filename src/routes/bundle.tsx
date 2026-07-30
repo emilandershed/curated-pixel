@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { toast } from "sonner";
 
@@ -7,7 +7,7 @@ import { PreviewTile } from "@/components/preview-tile";
 import { Reveal, SectionHeading } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { brand, formatPrice } from "@/config/brand";
-import { albums, bundle, totalWallpaperCount } from "@/config/products";
+import { BUNDLE_AVAILABLE, albums, bundle, totalWallpaperCount } from "@/config/products";
 import { useCart } from "@/lib/cart";
 import { bundleSavingsCents, bundleSavingsPercent, catalogueTotalCents } from "@/lib/pricing";
 
@@ -15,12 +15,18 @@ const title = `${bundle.title} — every album, one price | ${brand.name}`;
 const description = `All ${albums.length} albums and ${totalWallpaperCount} wallpapers in both iPhone and MacBook format, plus every future release, for ${formatPrice(bundle.priceCents)}.`;
 
 export const Route = createFileRoute("/bundle")({
+  // Temporary launch restriction: the bundle promises the whole library, which
+  // is not deliverable yet. Flip BUNDLE_AVAILABLE in src/config/products.ts.
+  beforeLoad: () => {
+    if (!BUNDLE_AVAILABLE) throw redirect({ to: "/shop" });
+  },
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { name: "robots", content: "noindex" },
     ],
   }),
   component: BundlePage,
