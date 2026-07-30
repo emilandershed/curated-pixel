@@ -62,6 +62,8 @@ const previewOverrides: Record<string, string> = {
   "tour-kit-6": tourKit06.url,
   "tour-kit-7": tourKit07.url,
   "tour-kit-8": tourKit08.url,
+  "tour-kit-9": tourKit09.url,
+  "tour-kit-10": tourKit10.url,
 };
 
 const makeWallpapers = (
