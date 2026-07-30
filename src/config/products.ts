@@ -39,6 +39,7 @@ export type Album = {
 };
 
 import tourKit01 from "@/assets/tour-kit-01.jpg.asset.json";
+import tourKit02 from "@/assets/tour-kit-02.jpg.asset.json";
 
 /**
  * Real, delivered preview art keyed by `${albumId}-${index}`.
@@ -46,6 +47,7 @@ import tourKit01 from "@/assets/tour-kit-01.jpg.asset.json";
  */
 const previewOverrides: Record<string, string> = {
   "tour-kit-1": tourKit01.url,
+  "tour-kit-2": tourKit02.url,
 };
 
 const makeWallpapers = (
