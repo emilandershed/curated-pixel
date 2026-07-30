@@ -244,7 +244,7 @@ const seeds: AlbumSeed[] = [
     theme: "Still life",
     blurb: "Equipment and ritual, studied one piece at a time.",
     description:
-      "Ten still lifes of the things that travel: cases, cables, worn leather, a folded map. Shot on a single grey seamless with one hard light, so each object reads clearly behind app icons.",
+      "Ten close studies of the game's essential objects — glove, ball, iron, tee — rendered in thick oil and warm, fading light. Each piece composed to sit quietly behind your icons.",
     priceCents: 900,
     wallpaperCount: 10,
     featured: false,
