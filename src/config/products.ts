@@ -237,7 +237,27 @@ const seeds: AlbumSeed[] = [
       ["oklch(0.72 0.07 225)", "oklch(0.48 0.09 235)", "oklch(0.27 0.06 245)"],
     ],
   },
+  {
+    id: "tour-kit",
+    slug: "tour-kit",
+    title: "Tour Kit",
+    theme: "Still life",
+    blurb: "Equipment and ritual, studied one piece at a time.",
+    description:
+      "Ten still lifes of the things that travel: cases, cables, worn leather, a folded map. Shot on a single grey seamless with one hard light, so each object reads clearly behind app icons.",
+    priceCents: 900,
+    wallpaperCount: 10,
+    featured: false,
+    releasedAt: "2026-07-22",
+    gradient: ["oklch(0.84 0.02 95)", "oklch(0.62 0.03 90)", "oklch(0.38 0.03 85)"],
+    palette: [
+      ["oklch(0.86 0.02 95)", "oklch(0.62 0.03 90)", "oklch(0.36 0.03 85)"],
+      ["oklch(0.8 0.025 70)", "oklch(0.56 0.035 60)", "oklch(0.31 0.03 55)"],
+      ["oklch(0.82 0.015 250)", "oklch(0.58 0.02 250)", "oklch(0.33 0.02 255)"],
+    ],
+  },
 ];
+
 
 export const albums: Album[] = seeds.map(({ palette, ...album }) => ({
   ...album,
