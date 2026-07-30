@@ -138,7 +138,7 @@ function Home() {
           <div className="grid grid-cols-3 gap-3">
             {albums.slice(0, 6).map((album) => (
               <div key={album.id} className="overflow-hidden shadow-frame">
-                <PreviewTile gradient={album.gradient} ratio="square" watermark={false} />
+                <PreviewTile gradient={album.gradient} previewSrc={album.coverSrc ?? null} alt={album.title} ratio="square" watermark={false} />
               </div>
             ))}
           </div>

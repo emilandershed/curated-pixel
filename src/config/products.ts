@@ -33,11 +33,14 @@ export type Album = {
   priceCents: number;
   wallpaperCount: number;
   featured: boolean;
+  /** Low-res, watermarked 16:9 cover. Public. Null = gradient placeholder. */
+  coverSrc?: string | null;
   releasedAt: string;
   gradient: [string, string, string];
   wallpapers: Wallpaper[];
 };
 
+import tourKitCover from "@/assets/tour-kit.jpg.asset.json";
 import tourKit01 from "@/assets/tour-kit-01.jpg.asset.json";
 import tourKit02 from "@/assets/tour-kit-02.jpg.asset.json";
 import tourKit03 from "@/assets/tour-kit-03.jpg.asset.json";
@@ -276,6 +279,7 @@ const seeds: AlbumSeed[] = [
     priceCents: 900,
     wallpaperCount: 10,
     featured: false,
+    coverSrc: tourKitCover.url,
     releasedAt: "2026-07-22",
     gradient: ["oklch(0.84 0.02 95)", "oklch(0.62 0.03 90)", "oklch(0.38 0.03 85)"],
     palette: [
