@@ -273,10 +273,10 @@ const seeds: AlbumSeed[] = [
     slug: "tour-kit",
     title: "Tour Kit",
     theme: "Still life",
-    blurb: "Equipment and ritual, studied one piece at a time.",
+    blurb: "What fits in the bag matters. What happens between shots matters more.",
     description:
       "Ten close studies of the game's essential objects — glove, ball, iron, tee — rendered in thick oil and warm, fading light. Each piece composed to sit quietly behind your icons.",
-    priceCents: 900,
+    priceCents: 699,
     wallpaperCount: 10,
     featured: false,
     coverSrc: tourKitCover.url,
