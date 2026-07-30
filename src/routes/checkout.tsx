@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { brand, formatPrice } from "@/config/brand";
@@ -125,7 +126,36 @@ function CheckoutPage() {
         />
       </div>
 
-      <Button size="lg" className="mt-8" onClick={onPay} disabled={submitting}>
+      <div className="mt-8 flex max-w-md items-start gap-3">
+        <Checkbox
+          id="withdrawal-consent"
+          checked={consented}
+          onCheckedChange={(value) => setConsented(value === true)}
+          className="mt-0.5"
+        />
+        <Label
+          htmlFor="withdrawal-consent"
+          className="text-xs font-normal leading-relaxed text-muted-foreground"
+        >
+          I request immediate delivery of these digital files and acknowledge that I
+          thereby lose my 14-day right of withdrawal, as described in the{" "}
+          <Link to="/legal/refunds" className="underline hover:text-foreground">
+            refund policy
+          </Link>{" "}
+          and{" "}
+          <Link to="/legal/terms" className="underline hover:text-foreground">
+            terms
+          </Link>
+          .
+        </Label>
+      </div>
+
+      <Button
+        size="lg"
+        className="mt-8"
+        onClick={onPay}
+        disabled={submitting || !consented}
+      >
         {submitting ? "Opening secure payment…" : "Pay securely"}
       </Button>
       <p className="mt-3 text-xs text-muted-foreground">
