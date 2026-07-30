@@ -291,10 +291,29 @@ const seeds: AlbumSeed[] = [
 ];
 
 
-export const albums: Album[] = seeds.map(({ palette, ...album }) => ({
+/**
+ * AVAILABILITY GATE — temporary launch restriction.
+ *
+ * Seed data for every album stays in this file so albums can be switched back
+ * on one at a time as real artwork lands. Only the slugs listed here are
+ * purchasable or browsable; everything else is invisible to the storefront AND
+ * rejected server-side during price resolution (see `src/lib/pricing.ts`).
+ */
+export const AVAILABLE_ALBUM_SLUGS: readonly string[] = ["tour-kit"];
+
+/** The bundle promises the whole library, so it stays off until it's true. */
+export const BUNDLE_AVAILABLE = false;
+
+/** Every album that exists in the catalogue, available or not. */
+export const allAlbums: Album[] = seeds.map(({ palette, ...album }) => ({
   ...album,
   wallpapers: makeWallpapers(album.id, album.wallpaperCount, palette),
 }));
+
+export const isAlbumAvailable = (slug: string) => AVAILABLE_ALBUM_SLUGS.includes(slug);
+
+/** The public catalogue: only albums that are actually deliverable today. */
+export const albums: Album[] = allAlbums.filter((a) => isAlbumAvailable(a.slug));
 
 export const bundle = {
   id: "all-in-one",
@@ -311,9 +330,18 @@ export const bundle = {
   ],
 } as const;
 
-export const getAlbumBySlug = (slug: string) => albums.find((a) => a.slug === slug);
+/** Public lookup — hidden albums resolve to undefined so their pages 404. */
+export const getAlbumBySlug = (slug: string) =>
+  albums.find((a) => a.slug === slug);
 
-export const featuredAlbums = () => albums.filter((a) => a.featured);
+/** Lookup across the full catalogue. For fulfilling historical orders only. */
+export const getAnyAlbumBySlug = (slug: string) =>
+  allAlbums.find((a) => a.slug === slug);
+
+export const featuredAlbums = () => {
+  const picked = albums.filter((a) => a.featured);
+  return picked.length > 0 ? picked : albums;
+};
 
 export const totalWallpaperCount = albums.reduce((n, a) => n + a.wallpaperCount, 0);
 
