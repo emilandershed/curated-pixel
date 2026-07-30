@@ -40,7 +40,7 @@ export type Album = {
   wallpapers: Wallpaper[];
 };
 
-import tourKitCover from "@/assets/tour-kit.jpg.asset.json";
+import tourKitCover from "@/assets/tour-kit-cover.png.asset.json";
 import tourKit01 from "@/assets/tour-kit-01.jpg.asset.json";
 import tourKit02 from "@/assets/tour-kit-02.jpg.asset.json";
 import tourKit03 from "@/assets/tour-kit-03.jpg.asset.json";
@@ -275,7 +275,7 @@ const seeds: AlbumSeed[] = [
     theme: "Still life",
     blurb: "What fits in the bag matters. What happens between shots matters more.",
     description:
-      "Ten close studies of the game's essential objects — glove, ball, iron, tee — rendered in thick oil and warm, fading light. Each piece composed to sit quietly behind your icons.",
+      "Aerial studies of the course itself — fairways, bunkers, water and the quiet figures moving through them. Each piece composed in thick, sculpted colour to sit calmly behind your icons.",
     priceCents: 699,
     wallpaperCount: 10,
     featured: false,
