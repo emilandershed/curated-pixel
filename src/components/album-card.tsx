@@ -16,7 +16,7 @@ export function AlbumCard({ album, index = 0 }: { album: Album; index?: number }
     >
       <div className="relative overflow-hidden bg-muted shadow-frame transition-shadow duration-500 group-hover:shadow-lift">
         <div className="transition-transform duration-700 ease-out group-hover:scale-[1.02]">
-          <PreviewTile gradient={album.gradient} ratio="desktop" watermark={false} />
+          <PreviewTile gradient={album.gradient} previewSrc={album.coverSrc ?? null} alt={album.title} ratio="desktop" watermark={false} />
         </div>
         <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
           <PreviewTile gradient={hoverGradient} ratio="desktop" watermark={false} />
