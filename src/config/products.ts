@@ -46,6 +46,8 @@ import tourKit05 from "@/assets/tour-kit-05.jpg.asset.json";
 import tourKit06 from "@/assets/tour-kit-06.jpg.asset.json";
 import tourKit07 from "@/assets/tour-kit-07.jpg.asset.json";
 import tourKit08 from "@/assets/tour-kit-08.jpg.asset.json";
+import tourKit09 from "@/assets/tour-kit-09.jpg.asset.json";
+import tourKit10 from "@/assets/tour-kit-10.jpg.asset.json";
 
 /**
  * Real, delivered preview art keyed by `${albumId}-${index}`.
