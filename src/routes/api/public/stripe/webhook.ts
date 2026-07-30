@@ -17,6 +17,7 @@ type StripeEvent = {
   data: {
     object: {
       id: string;
+      payment_status?: string | null;
       payment_intent?: string | null;
       customer_details?: { email?: string | null } | null;
       customer_email?: string | null;
@@ -51,7 +52,11 @@ export const Route = createFileRoute("/api/public/stripe/webhook")({
           return new Response("Malformed payload", { status: 400 });
         }
 
-        if (event.type !== "checkout.session.completed") {
+        if (
+          event.type !== "checkout.session.completed" &&
+          event.type !== "checkout.session.async_payment_succeeded" &&
+          event.type !== "checkout.session.async_payment_failed"
+        ) {
           return new Response("Ignored", { status: 200 });
         }
 
@@ -60,6 +65,24 @@ export const Route = createFileRoute("/api/public/stripe/webhook")({
         if (!isNew) return new Response("Already processed", { status: 200 });
 
         const session = event.data.object;
+
+        if (event.type === "checkout.session.async_payment_failed") {
+          console.log("[webhook] async payment failed", session.id);
+          return new Response("ok", { status: 200 });
+        }
+
+        if (
+          event.type === "checkout.session.completed" &&
+          session.payment_status !== "paid"
+        ) {
+          console.log(
+            "[webhook] checkout.session.completed but payment_status is",
+            session.payment_status,
+            "— waiting for async_payment_succeeded",
+          );
+          return new Response("ok", { status: 200 });
+        }
+
         const order = await fulfilOrder({
           sessionId: session.id,
           paymentId: session.payment_intent ?? null,
