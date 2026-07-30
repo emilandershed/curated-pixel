@@ -53,7 +53,7 @@ function AlbumPage() {
 
       <div className="grid gap-12 lg:grid-cols-[1.35fr_1fr]">
         <div className="overflow-hidden shadow-lift">
-          <PreviewTile gradient={album.gradient} previewSrc={album.coverSrc ?? null} alt={album.title} ratio="auto" />
+          <PreviewTile gradient={album.gradient} previewSrc={album.coverSrc ?? null} alt={album.title} ratio="auto" eager />
         </div>
 
         <div className="lg:sticky lg:top-24 lg:self-start">

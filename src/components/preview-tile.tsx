@@ -24,6 +24,7 @@ export function PreviewTile({
   alt,
   className,
   watermark = true,
+  eager = false,
   children,
 }: {
   gradient: readonly [string, string, string];
@@ -32,6 +33,7 @@ export function PreviewTile({
   alt?: string;
   className?: string;
   watermark?: boolean;
+  eager?: boolean;
   children?: React.ReactNode;
 }) {
   const [a, b, c] = gradient;
@@ -50,7 +52,9 @@ export function PreviewTile({
         <img
           src={previewSrc}
           alt={alt ?? ""}
-          loading="lazy"
+          loading={eager ? "eager" : "lazy"}
+          {...(eager ? { fetchPriority: "high" as const } : {})}
+          decoding={eager ? "sync" : "async"}
           draggable={false}
           className={cn(
             "block w-full",

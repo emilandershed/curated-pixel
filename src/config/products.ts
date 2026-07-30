@@ -42,7 +42,7 @@ export type Album = {
   wallpapers: Wallpaper[];
 };
 
-import tourKitHomeCover from "@/assets/tour-kit-cover.png.asset.json";
+import tourKitHomeCover from "@/assets/tour-kit-home-cover.jpg.asset.json";
 import tourKitAlbumCover from "@/assets/tour-kit-album-cover.jpg.asset.json";
 import tourKit01 from "@/assets/tour-kit-01.jpg.asset.json";
 import tourKit02 from "@/assets/tour-kit-02.jpg.asset.json";

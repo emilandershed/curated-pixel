@@ -100,7 +100,7 @@ function Shop() {
           <div className="grid grid-cols-4 gap-2">
             {albums.slice(0, 8).map((album) => (
               <div key={album.id} className="overflow-hidden shadow-frame">
-                <PreviewTile gradient={album.gradient} previewSrc={album.coverSrc ?? null} alt={album.title} ratio="square" watermark={false} />
+                <PreviewTile gradient={album.gradient} previewSrc={album.coverSrc ?? null} alt={album.title} ratio="square" watermark={false} eager />
               </div>
             ))}
           </div>
