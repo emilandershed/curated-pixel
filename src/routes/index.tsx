@@ -64,7 +64,7 @@ function Home() {
         <div className="relative h-[78vh] min-h-[520px] w-full overflow-hidden">
           <PreviewTile
             gradient={hero.gradient}
-            previewSrc={hero.coverSrc ?? null}
+            previewSrc={(hero.homeCoverSrc ?? hero.coverSrc) ?? null}
             alt={hero.title}
             ratio="desktop"
             watermark={false}
@@ -144,7 +144,7 @@ function Home() {
           <div className="grid grid-cols-3 gap-3">
             {albums.slice(0, 6).map((album) => (
               <div key={album.id} className="overflow-hidden shadow-frame">
-                <PreviewTile gradient={album.gradient} previewSrc={album.coverSrc ?? null} alt={album.title} ratio="square" watermark={false} />
+                <PreviewTile gradient={album.gradient} previewSrc={(album.homeCoverSrc ?? album.coverSrc) ?? null} alt={album.title} ratio="square" watermark={false} />
               </div>
             ))}
           </div>

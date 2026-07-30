@@ -35,12 +35,15 @@ export type Album = {
   featured: boolean;
   /** Low-res, watermarked 16:9 cover. Public. Null = gradient placeholder. */
   coverSrc?: string | null;
+  /** Optional separate cover for the homepage hero / featured section. */
+  homeCoverSrc?: string | null;
   releasedAt: string;
   gradient: [string, string, string];
   wallpapers: Wallpaper[];
 };
 
-import tourKitCover from "@/assets/tour-kit-cover.png.asset.json";
+import tourKitHomeCover from "@/assets/tour-kit-cover.png.asset.json";
+import tourKitAlbumCover from "@/assets/tour-kit-album-cover.jpg.asset.json";
 import tourKit01 from "@/assets/tour-kit-01.jpg.asset.json";
 import tourKit02 from "@/assets/tour-kit-02.jpg.asset.json";
 import tourKit03 from "@/assets/tour-kit-03.jpg.asset.json";
@@ -279,7 +282,8 @@ const seeds: AlbumSeed[] = [
     priceCents: 699,
     wallpaperCount: 10,
     featured: false,
-    coverSrc: tourKitCover.url,
+    coverSrc: tourKitAlbumCover.url,
+    homeCoverSrc: tourKitHomeCover.url,
     releasedAt: "2026-07-22",
     gradient: ["oklch(0.84 0.02 95)", "oklch(0.62 0.03 90)", "oklch(0.38 0.03 85)"],
     palette: [
