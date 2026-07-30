@@ -64,6 +64,8 @@ function Home() {
         <div className="relative h-[78vh] min-h-[520px] w-full overflow-hidden">
           <PreviewTile
             gradient={hero.gradient}
+            previewSrc={hero.coverSrc ?? null}
+            alt={hero.title}
             ratio="desktop"
             watermark={false}
             className="absolute inset-0 !aspect-auto h-full w-full"
