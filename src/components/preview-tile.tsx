@@ -1,12 +1,13 @@
 import { cn } from "@/lib/utils";
 
-type Ratio = "mobile" | "desktop" | "wide" | "square";
+type Ratio = "mobile" | "desktop" | "wide" | "square" | "auto";
 
 const ratioClass: Record<Ratio, string> = {
   mobile: "aspect-[9/16]",
   desktop: "aspect-[16/9]",
   wide: "aspect-[21/9]",
   square: "aspect-square",
+  auto: "",
 };
 
 /**
@@ -34,6 +35,7 @@ export function PreviewTile({
   children?: React.ReactNode;
 }) {
   const [a, b, c] = gradient;
+  const isAuto = ratio === "auto";
 
   return (
     <div
@@ -50,12 +52,15 @@ export function PreviewTile({
           alt={alt ?? ""}
           loading="lazy"
           draggable={false}
-          className="absolute inset-0 h-full w-full object-cover"
+          className={cn(
+            "block w-full",
+            isAuto ? "h-auto object-contain" : "absolute inset-0 h-full object-cover",
+          )}
         />
       ) : (
         <div
           aria-hidden
-          className="absolute inset-0"
+          className={cn("inset-0", isAuto ? "aspect-[16/9]" : "absolute")}
           style={{
             backgroundImage: `radial-gradient(120% 90% at 20% 15%, ${a} 0%, transparent 60%), radial-gradient(110% 100% at 85% 30%, ${b} 0%, transparent 65%), linear-gradient(160deg, ${b} 0%, ${c} 100%)`,
           }}
