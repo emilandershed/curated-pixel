@@ -38,6 +38,16 @@ export type Album = {
   wallpapers: Wallpaper[];
 };
 
+import tourKit01 from "@/assets/tour-kit-01.jpg.asset.json";
+
+/**
+ * Real, delivered preview art keyed by `${albumId}-${index}`.
+ * Only low-resolution, watermarked previews belong here.
+ */
+const previewOverrides: Record<string, string> = {
+  "tour-kit-1": tourKit01.url,
+};
+
 const makeWallpapers = (
   albumId: string,
   count: number,
@@ -46,7 +56,7 @@ const makeWallpapers = (
   Array.from({ length: count }, (_, i) => ({
     id: `${albumId}-${i + 1}`,
     name: `${String(i + 1).padStart(2, "0")}`,
-    previewSrc: null,
+    previewSrc: previewOverrides[`${albumId}-${i + 1}`] ?? null,
     downloadKey: `albums/${albumId}/full/${String(i + 1).padStart(2, "0")}.zip`,
     gradient: palette[i % palette.length],
   }));
