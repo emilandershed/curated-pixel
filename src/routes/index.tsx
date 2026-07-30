@@ -17,11 +17,11 @@ import {
 import { brand, formatPrice } from "@/config/brand";
 import { faq } from "@/config/faq";
 import { reviews, reviewsAreSampleContent } from "@/config/reviews";
-import { albums, bundle, featuredAlbums, totalWallpaperCount } from "@/config/products";
+import { BUNDLE_AVAILABLE, albums, bundle, featuredAlbums, totalWallpaperCount } from "@/config/products";
 import { bundleSavingsCents, bundleSavingsPercent } from "@/lib/pricing";
 
 const title = `${brand.name} — Digital wallpapers for iPhone & MacBook`;
-const description = `${totalWallpaperCount} curated wallpapers across ${albums.length} albums. Every frame delivered in both 9:16 and 16:9, at full resolution, instantly after purchase.`;
+const description = `${totalWallpaperCount} curated wallpapers across ${albums.length} ${albums.length === 1 ? "album" : "albums"}. Every frame delivered in both 9:16 and 16:9, at full resolution, instantly after purchase.`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -54,7 +54,7 @@ const valueProps = [
 ];
 
 function Home() {
-  const hero = albums[2];
+  const hero = albums[0];
   const featured = featuredAlbums();
 
   return (
@@ -64,6 +64,8 @@ function Home() {
         <div className="relative h-[78vh] min-h-[520px] w-full overflow-hidden">
           <PreviewTile
             gradient={hero.gradient}
+            previewSrc={hero.coverSrc ?? null}
+            alt={hero.title}
             ratio="desktop"
             watermark={false}
             className="absolute inset-0 !aspect-auto h-full w-full"
@@ -76,8 +78,9 @@ function Home() {
               Wallpapers worth the screen they live on.
             </h1>
             <p className="animate-rise mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {albums.length} curated albums, {totalWallpaperCount} frames. Each one delivered
-              in both iPhone and MacBook format, at the resolution it was made in.
+              {albums.length} curated {albums.length === 1 ? "album" : "albums"},{" "}
+              {totalWallpaperCount} frames. Each one delivered in both iPhone and MacBook
+              format, at the resolution it was made in.
             </p>
             <div className="animate-rise mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
@@ -85,9 +88,11 @@ function Home() {
                   Browse the collection <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link to="/bundle">Get everything · {formatPrice(bundle.priceCents)}</Link>
-              </Button>
+              {BUNDLE_AVAILABLE && (
+                <Button asChild size="lg" variant="outline">
+                  <Link to="/bundle">Get everything · {formatPrice(bundle.priceCents)}</Link>
+                </Button>
+              )}
             </div>
           </div>
         </div>
@@ -107,6 +112,7 @@ function Home() {
       </section>
 
       {/* Bundle offer */}
+      {BUNDLE_AVAILABLE && (
       <section className="mx-auto max-w-6xl px-5 py-24 sm:px-8">
         <Reveal className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
           <div>
@@ -144,6 +150,7 @@ function Home() {
           </div>
         </Reveal>
       </section>
+      )}
 
       {/* Featured albums */}
       <section className="mx-auto max-w-6xl px-5 pb-24 sm:px-8">
@@ -164,7 +171,7 @@ function Home() {
         <Reveal className="mt-14">
           <Button asChild variant="outline">
             <Link to="/shop">
-              All {albums.length} albums <ArrowRight className="ml-1 h-4 w-4" />
+              {albums.length > 1 ? `All ${albums.length} albums` : "Browse the shop"} <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </Button>
         </Reveal>
@@ -197,7 +204,7 @@ function Home() {
           />
         </Reveal>
         <Reveal className="mt-16" delay={100}>
-          <DeviceMockups gradient={albums[8].gradient} />
+          <DeviceMockups gradient={albums[albums.length - 1].gradient} />
         </Reveal>
       </section>
 

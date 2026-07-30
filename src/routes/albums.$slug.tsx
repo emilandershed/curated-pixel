@@ -7,7 +7,7 @@ import { PreviewTile } from "@/components/preview-tile";
 import { Reveal } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { brand, formatPrice } from "@/config/brand";
-import { bundle, getAlbumBySlug, type Wallpaper } from "@/config/products";
+import { BUNDLE_AVAILABLE, bundle, getAlbumBySlug, type Wallpaper } from "@/config/products";
 import { useCart } from "@/lib/cart";
 import { bundleSavingsPercent } from "@/lib/pricing";
 
@@ -92,6 +92,7 @@ function AlbumPage() {
             </Button>
           </div>
 
+          {BUNDLE_AVAILABLE && (
           <div className="mt-8 border border-border bg-secondary/50 p-5">
             <p className="text-sm text-foreground">
               Or take all {bundle.title.toLowerCase()} for {formatPrice(bundle.priceCents)} —{" "}
@@ -101,6 +102,7 @@ function AlbumPage() {
               <Link to="/bundle">See the bundle</Link>
             </Button>
           </div>
+          )}
 
           <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
             Previews on this page are low-resolution and watermarked. Full-resolution files are

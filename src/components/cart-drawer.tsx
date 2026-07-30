@@ -10,13 +10,13 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { formatPrice } from "@/config/brand";
-import { bundle } from "@/config/products";
+import { BUNDLE_AVAILABLE, bundle } from "@/config/products";
 import { useCart } from "@/lib/cart";
 import { resolveLinePriceCents, resolveLineTitle, bundleSavingsCents } from "@/lib/pricing";
 
 export function CartDrawer() {
   const { lines, isOpen, setOpen, remove, totalCents, has } = useCart();
-  const showBundleNudge = lines.length >= 2 && !has(bundle.id);
+  const showBundleNudge = BUNDLE_AVAILABLE && lines.length >= 2 && !has(bundle.id);
 
   return (
     <Sheet open={isOpen} onOpenChange={setOpen}>

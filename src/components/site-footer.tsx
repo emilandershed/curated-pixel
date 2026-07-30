@@ -22,11 +22,6 @@ export function SiteFooter() {
                   All albums
                 </Link>
               </li>
-              <li>
-                <Link to="/bundle" className="text-muted-foreground hover:text-foreground">
-                  All-in-One Bundle
-                </Link>
-              </li>
             </ul>
           </nav>
 

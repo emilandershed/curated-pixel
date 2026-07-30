@@ -1,9 +1,14 @@
-import { albums, bundle, getAlbumBySlug } from "@/config/products";
+import {
+  BUNDLE_AVAILABLE,
+  allAlbums,
+  bundle,
+  getAlbumBySlug,
+} from "@/config/products";
 
 export type CartLine = { id: string; kind: "album" | "bundle"; quantity: 1 };
 
-/** Sum of every album bought individually. */
-export const catalogueTotalCents = albums.reduce((n, a) => n + a.priceCents, 0);
+/** Sum of every album in the full catalogue bought individually. */
+export const catalogueTotalCents = allAlbums.reduce((n, a) => n + a.priceCents, 0);
 
 /** What the bundle saves versus buying everything separately. */
 export const bundleSavingsCents = catalogueTotalCents - bundle.priceCents;
@@ -17,16 +22,28 @@ export const upgradeSavingsCents = (albumPriceCents: number) =>
   Math.max(0, catalogueTotalCents - albumPriceCents - (bundle.priceCents - albumPriceCents));
 
 /**
- * Resolve a cart line to its authoritative price.
+ * AVAILABILITY GATE (server-authoritative).
+ *
+ * `getAlbumBySlug` only sees albums whitelisted in `AVAILABLE_ALBUM_SLUGS`, and
+ * the bundle is gated behind `BUNDLE_AVAILABLE`. A hand-crafted or replayed
+ * request naming a hidden album or the bundle resolves to `null` here, so
+ * `resolveOrderLines` drops it and checkout refuses to price it.
+ *
  * Never trust a price supplied by the client — always resolve it here.
  */
 export const resolveLinePriceCents = (line: CartLine): number | null => {
-  if (line.kind === "bundle") return line.id === bundle.id ? bundle.priceCents : null;
+  if (line.kind === "bundle") {
+    if (!BUNDLE_AVAILABLE) return null;
+    return line.id === bundle.id ? bundle.priceCents : null;
+  }
   return getAlbumBySlug(line.id)?.priceCents ?? null;
 };
 
 export const resolveLineTitle = (line: CartLine): string | null => {
-  if (line.kind === "bundle") return line.id === bundle.id ? bundle.title : null;
+  if (line.kind === "bundle") {
+    if (!BUNDLE_AVAILABLE) return null;
+    return line.id === bundle.id ? bundle.title : null;
+  }
   return getAlbumBySlug(line.id)?.title ?? null;
 };
 
