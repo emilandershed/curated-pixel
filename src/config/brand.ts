@@ -12,9 +12,11 @@ export const brand = {
   currencySymbol: "€",
   locale: "en-IE",
   legal: {
-    entity: "Faint Line (sole trader)",
-    address: "Address placeholder, Sweden",
-    vatNumber: "VAT number placeholder",
+    entity: "Faint Line (enskild firma)",
+    // TODO: replace with the real registered address before launch
+    address: "TODO: registered address, Sweden",
+    // TODO: replace with the real org. no. / VAT number before launch
+    vatNumber: "TODO: org. no. / VAT number",
   },
   social: {
     instagram: "https://instagram.com/",

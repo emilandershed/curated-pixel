@@ -1,4 +1,4 @@
-# Frame & Form
+# Faint Line
 
 Build a premium e-commerce website for Faint Line, a digital wallpaper store selling curated wallpaper collections for iPhone and MacBook (every wallpaper delivered in both mobile 9:16 and desktop 16:9 format).
 
