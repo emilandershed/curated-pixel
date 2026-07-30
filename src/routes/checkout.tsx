@@ -35,6 +35,7 @@ function CheckoutPage() {
   const { cancelled } = useSearch({ from: "/checkout" });
   const startCheckout = useServerFn(createCheckoutSession);
   const [email, setEmail] = useState("");
+  const [consented, setConsented] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const emailLooksValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -42,6 +43,10 @@ function CheckoutPage() {
   const onPay = async () => {
     if (!emailLooksValid) {
       toast.error("Enter the email address your download links should go to.");
+      return;
+    }
+    if (!consented) {
+      toast.error("Please confirm immediate delivery to continue.");
       return;
     }
     setSubmitting(true);
