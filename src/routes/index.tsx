@@ -68,8 +68,10 @@ function Home() {
             alt={hero.title}
             ratio="desktop"
             watermark={false}
+            eager
             className="absolute inset-0 !aspect-auto h-full w-full"
           />
+
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/45 to-background/10" />
 
           <div className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-end px-5 pb-16 sm:px-8 sm:pb-24">
