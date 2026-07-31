@@ -94,7 +94,7 @@ function BundlePage() {
 
       <section className="mt-24">
         <Reveal>
-          <SectionHeading eyebrow="Included" title="Everything in the library." />
+          <SectionHeading eyebrow="Included" title="Both albums included." />
         </Reveal>
         <div className="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           {albums.map((album, i) => (
