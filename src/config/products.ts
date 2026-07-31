@@ -315,7 +315,7 @@ const seeds: AlbumSeed[] = [
       "Aerial fairways, bunkers and gilded surfaces painted in thick impasto and tiled into calm, repeating pattern. Deep greens and burnished gold, composed to sit quietly behind icons on both iPhone and MacBook.",
     priceCents: 499,
     compareAtCents: 899,
-    wallpaperCount: 3,
+    wallpaperCount: 5,
     featured: false,
     coverSrc: golfHour01.url,
     releasedAt: "2026-07-31",
