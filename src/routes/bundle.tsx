@@ -11,14 +11,13 @@ import { BUNDLE_AVAILABLE, albums, bundle, totalWallpaperCount } from "@/config/
 import { useCart } from "@/lib/cart";
 import { bundleSavingsCents, bundleSavingsPercent, catalogueTotalCents } from "@/lib/pricing";
 
-const title = `${bundle.title} — every album, one price | ${brand.name}`;
-const description = `All ${albums.length} albums and ${totalWallpaperCount} wallpapers in both iPhone and MacBook format, plus every future release, for ${formatPrice(bundle.priceCents)}.`;
+const title = `${bundle.title} — both albums, one price | ${brand.name}`;
+const description = `Both albums and all ${totalWallpaperCount} wallpapers in iPhone and MacBook format for ${formatPrice(bundle.priceCents)}.`;
 
 export const Route = createFileRoute("/bundle")({
-  // Temporary launch restriction: the bundle promises the whole library, which
-  // is not deliverable yet. Flip BUNDLE_AVAILABLE in src/config/products.ts.
+  // The pack is only purchasable while more than one album is available.
   beforeLoad: () => {
-    if (!BUNDLE_AVAILABLE) throw redirect({ to: "/shop" });
+    if (!BUNDLE_AVAILABLE || albums.length < 2) throw redirect({ to: "/shop" });
   },
   head: () => ({
     meta: [
@@ -48,9 +47,9 @@ function BundlePage() {
 
           <ul className="mt-8 space-y-2 text-sm">
             {[
-              `All ${albums.length} albums · ${totalWallpaperCount} wallpapers`,
+              `Both albums · ${totalWallpaperCount} wallpapers`,
               "Both formats for every single frame",
-              "Every future album included, free",
+              "Cheaper than buying the two albums separately",
               "Instant download, links valid for 90 days",
             ].map((item) => (
               <li key={item} className="flex items-center gap-2">
