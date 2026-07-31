@@ -75,6 +75,9 @@ const previewOverrides: Record<string, string> = {
   "tour-kit-8": tourKit08.url,
   "tour-kit-9": tourKit09.url,
   "tour-kit-10": tourKit10.url,
+  "golf-hour-1": golfHour01.url,
+  "golf-hour-2": golfHour02.url,
+  "golf-hour-3": golfHour03.url,
 };
 
 const makeWallpapers = (
