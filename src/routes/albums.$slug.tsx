@@ -76,10 +76,24 @@ function AlbumPage() {
             ))}
           </ul>
 
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <span className="font-display text-3xl tabular-nums">
               {formatPrice(album.priceCents)}
             </span>
+            {album.compareAtCents && album.compareAtCents > album.priceCents && (
+              <>
+                <span className="text-sm tabular-nums text-muted-foreground line-through">
+                  {formatPrice(album.compareAtCents)}
+                </span>
+                <span className="bg-foreground px-2 py-1 text-[11px] uppercase tracking-[0.14em] text-background">
+                  Save{" "}
+                  {Math.round(
+                    ((album.compareAtCents - album.priceCents) / album.compareAtCents) * 100,
+                  )}
+                  %
+                </span>
+              </>
+            )}
             <Button
               size="lg"
               disabled={inCart}
