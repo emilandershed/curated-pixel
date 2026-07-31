@@ -83,7 +83,7 @@ function BundlePage() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 gap-3">
           {albums.map((album) => (
             <div key={album.id} className="overflow-hidden shadow-frame">
               <PreviewTile gradient={album.gradient} ratio="mobile" watermark={false} />
