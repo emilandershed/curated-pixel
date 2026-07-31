@@ -366,11 +366,11 @@ export const albums: Album[] = allAlbums.filter((a) => isAlbumAvailable(a.slug))
 export const bundle = {
   id: "all-in-one",
   slug: "bundle",
-  title: "The All-in-One Bundle",
-  blurb: "Every album, every format, one price — including everything released next.",
+  title: "The Two-Album Pack",
+  blurb: "Tour Kit and Golf Hour together, both formats, one price.",
   description:
-    "The complete library in both iPhone and MacBook formats, plus every album published from here on. One purchase, permanent access.",
-  priceCents: 4900,
+    "Both albums in the store today — Tour Kit and Golf Hour — in iPhone and MacBook format. Twenty wallpapers, one purchase, instant download.",
+  priceCents: 799,
   gradient: ["oklch(0.9 0.03 80)", "oklch(0.6 0.06 250)", "oklch(0.2 0.04 270)"] as [
     string,
     string,
