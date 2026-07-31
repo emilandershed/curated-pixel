@@ -31,6 +31,8 @@ export type Album = {
   blurb: string;
   description: string;
   priceCents: number;
+  /** Original price when the album is on sale. Display only. */
+  compareAtCents?: number;
   wallpaperCount: number;
   featured: boolean;
   /** Low-res, watermarked 16:9 cover. Public. Null = gradient placeholder. */
@@ -279,7 +281,8 @@ const seeds: AlbumSeed[] = [
     blurb: "What fits in the bag matters. What happens between shots matters more.",
     description:
       "Aerial studies of the course itself — fairways, bunkers, water and the quiet figures moving through them. Each piece composed in thick, sculpted colour to sit calmly behind your icons.",
-    priceCents: 699,
+    priceCents: 499,
+    compareAtCents: 899,
     wallpaperCount: 10,
     featured: false,
     coverSrc: tourKitAlbumCover.url,

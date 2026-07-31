@@ -76,10 +76,24 @@ function AlbumPage() {
             ))}
           </ul>
 
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <span className="font-display text-3xl tabular-nums">
               {formatPrice(album.priceCents)}
             </span>
+            {album.compareAtCents && album.compareAtCents > album.priceCents && (
+              <>
+                <span className="text-sm tabular-nums text-muted-foreground line-through">
+                  {formatPrice(album.compareAtCents)}
+                </span>
+                <span className="bg-foreground px-2 py-1 text-[11px] uppercase tracking-[0.14em] text-background">
+                  Save{" "}
+                  {Math.round(
+                    ((album.compareAtCents - album.priceCents) / album.compareAtCents) * 100,
+                  )}
+                  %
+                </span>
+              </>
+            )}
             <Button
               size="lg"
               disabled={inCart}
@@ -113,21 +127,31 @@ function AlbumPage() {
 
       <section className="mt-20">
         <h2 className="eyebrow">Inside the album</h2>
+        <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+          Ten motifs, shown here as cropped fragments only — texture, colour and mood. The
+          full compositions stay unreleased until you own them.
+        </p>
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {album.wallpapers.map((wallpaper: Wallpaper, i: number) => (
             <Reveal key={wallpaper.id} delay={(i % 4) * 60}>
-              <div className="overflow-hidden shadow-frame">
+              <div className="relative overflow-hidden shadow-frame">
                 <PreviewTile
                   gradient={wallpaper.gradient}
                   previewSrc={wallpaper.previewSrc}
-                  alt={`${album.title} ${wallpaper.name} preview`}
+                  alt={`${album.title} fragment ${wallpaper.name}`}
                   ratio="mobile"
+                  teaser
+                  teaserIndex={i}
                 />
+                <span className="pointer-events-none absolute bottom-2 left-3 text-[10px] uppercase tracking-[0.18em] text-white/70">
+                  {wallpaper.name} · fragment
+                </span>
               </div>
             </Reveal>
           ))}
         </div>
       </section>
+
 
       <section className="mt-24">
         <h2 className="font-display text-3xl">Both formats, one purchase.</h2>

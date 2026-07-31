@@ -28,8 +28,13 @@ export function AlbumCard({ album, index = 0 }: { album: Album; index?: number }
 
       <div className="mt-4 flex items-baseline justify-between gap-4">
         <h3 className="font-display text-2xl leading-none text-foreground">{album.title}</h3>
-        <span className="text-sm tabular-nums text-muted-foreground">
-          {formatPrice(album.priceCents)}
+        <span className="flex items-baseline gap-2 text-sm tabular-nums text-muted-foreground">
+          {album.compareAtCents && album.compareAtCents > album.priceCents && (
+            <span className="text-muted-foreground/70 line-through">
+              {formatPrice(album.compareAtCents)}
+            </span>
+          )}
+          <span className="text-foreground">{formatPrice(album.priceCents)}</span>
         </span>
       </div>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{album.blurb}</p>

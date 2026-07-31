@@ -25,6 +25,8 @@ export function PreviewTile({
   className,
   watermark = true,
   eager = false,
+  teaser = false,
+  teaserIndex = 0,
   children,
 }: {
   gradient: readonly [string, string, string];
@@ -34,10 +36,17 @@ export function PreviewTile({
   className?: string;
   watermark?: boolean;
   eager?: boolean;
+  /** Shows only a magnified fragment of the preview, softened and veiled. */
+  teaser?: boolean;
+  teaserIndex?: number;
   children?: React.ReactNode;
 }) {
   const [a, b, c] = gradient;
   const isAuto = ratio === "auto";
+
+  // Rotating focal points so each teaser reveals a different fragment.
+  const focals = ["50% 22%", "32% 55%", "68% 40%", "50% 78%", "22% 32%"];
+  const focal = focals[teaserIndex % focals.length];
 
   return (
     <div
@@ -59,7 +68,9 @@ export function PreviewTile({
           className={cn(
             "block w-full",
             isAuto ? "h-auto object-contain" : "absolute inset-0 h-full object-cover",
+            teaser && "scale-[1.9] blur-[1.5px] saturate-[0.92]",
           )}
+          style={teaser ? { objectPosition: focal } : undefined}
         />
       ) : (
         <div
@@ -79,6 +90,22 @@ export function PreviewTile({
             "repeating-linear-gradient(45deg, transparent 0 3px, rgba(255,255,255,0.35) 3px 4px)",
         }}
       />
+
+      {teaser && (
+        <>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              backgroundImage: `linear-gradient(200deg, ${a}33 0%, transparent 45%, ${c}66 100%)`,
+            }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-background/10 backdrop-blur-[1px]"
+          />
+        </>
+      )}
 
       {watermark && (
         <span
