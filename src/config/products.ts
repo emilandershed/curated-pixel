@@ -80,6 +80,8 @@ const previewOverrides: Record<string, string> = {
   "golf-hour-1": golfHour01.url,
   "golf-hour-2": golfHour02.url,
   "golf-hour-3": golfHour03.url,
+  "golf-hour-4": golfHour04.url,
+  "golf-hour-5": golfHour05.url,
 };
 
 const makeWallpapers = (
