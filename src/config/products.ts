@@ -56,6 +56,9 @@ import tourKit07 from "@/assets/tour-kit-07.jpg.asset.json";
 import tourKit08 from "@/assets/tour-kit-08.jpg.asset.json";
 import tourKit09 from "@/assets/tour-kit-09.jpg.asset.json";
 import tourKit10 from "@/assets/tour-kit-10.jpg.asset.json";
+import golfHour01 from "@/assets/golf-hour-01.jpg.asset.json";
+import golfHour02 from "@/assets/golf-hour-02.jpg.asset.json";
+import golfHour03 from "@/assets/golf-hour-03.jpg.asset.json";
 
 /**
  * Real, delivered preview art keyed by `${albumId}-${index}`.
@@ -72,6 +75,9 @@ const previewOverrides: Record<string, string> = {
   "tour-kit-8": tourKit08.url,
   "tour-kit-9": tourKit09.url,
   "tour-kit-10": tourKit10.url,
+  "golf-hour-1": golfHour01.url,
+  "golf-hour-2": golfHour02.url,
+  "golf-hour-3": golfHour03.url,
 };
 
 const makeWallpapers = (
@@ -293,6 +299,27 @@ const seeds: AlbumSeed[] = [
       ["oklch(0.86 0.02 95)", "oklch(0.62 0.03 90)", "oklch(0.36 0.03 85)"],
       ["oklch(0.8 0.025 70)", "oklch(0.56 0.035 60)", "oklch(0.31 0.03 55)"],
       ["oklch(0.82 0.015 250)", "oklch(0.58 0.02 250)", "oklch(0.33 0.02 255)"],
+    ],
+  },
+  {
+    id: "golf-hour",
+    slug: "golf-hour",
+    title: "Golf Hour",
+    theme: "Pattern",
+    blurb: "The course, repeated until it becomes ornament.",
+    description:
+      "Aerial fairways, bunkers and gilded surfaces painted in thick impasto and tiled into calm, repeating pattern. Deep greens and burnished gold, composed to sit quietly behind icons on both iPhone and MacBook.",
+    priceCents: 499,
+    compareAtCents: 899,
+    wallpaperCount: 3,
+    featured: false,
+    coverSrc: golfHour01.url,
+    releasedAt: "2026-07-31",
+    gradient: ["oklch(0.72 0.09 125)", "oklch(0.5 0.09 130)", "oklch(0.3 0.06 135)"],
+    palette: [
+      ["oklch(0.74 0.09 125)", "oklch(0.5 0.09 130)", "oklch(0.28 0.06 135)"],
+      ["oklch(0.7 0.085 115)", "oklch(0.46 0.085 120)", "oklch(0.26 0.055 128)"],
+      ["oklch(0.85 0.1 90)", "oklch(0.66 0.11 85)", "oklch(0.4 0.08 80)"],
     ],
   },
 ];
