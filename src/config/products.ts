@@ -63,6 +63,9 @@ import golfHour04 from "@/assets/golf-hour-04.jpg.asset.json";
 import golfHour05 from "@/assets/golf-hour-05.jpg.asset.json";
 import golfHour06 from "@/assets/golf-hour-06.jpg.asset.json";
 import golfHour07 from "@/assets/golf-hour-07.jpg.asset.json";
+import golfHour08 from "@/assets/golf-hour-08.jpg.asset.json";
+import golfHour09 from "@/assets/golf-hour-09.jpg.asset.json";
+import golfHour10 from "@/assets/golf-hour-10.jpg.asset.json";
 
 /**
  * Real, delivered preview art keyed by `${albumId}-${index}`.
@@ -86,6 +89,9 @@ const previewOverrides: Record<string, string> = {
   "golf-hour-5": golfHour05.url,
   "golf-hour-6": golfHour06.url,
   "golf-hour-7": golfHour07.url,
+  "golf-hour-8": golfHour08.url,
+  "golf-hour-9": golfHour09.url,
+  "golf-hour-10": golfHour10.url,
 };
 
 const makeWallpapers = (
@@ -319,7 +325,7 @@ const seeds: AlbumSeed[] = [
       "Aerial fairways, bunkers and gilded surfaces painted in thick impasto and tiled into calm, repeating pattern. Deep greens and burnished gold, composed to sit quietly behind icons on both iPhone and MacBook.",
     priceCents: 499,
     compareAtCents: 899,
-    wallpaperCount: 7,
+    wallpaperCount: 10,
     featured: false,
     coverSrc: golfHour01.url,
     releasedAt: "2026-07-31",
