@@ -320,9 +320,9 @@ const seeds: AlbumSeed[] = [
     slug: "golf-hour",
     title: "Golf Hour",
     theme: "Pattern",
-    blurb: "The course, repeated until it becomes ornament.",
+    blurb: "The last light of the round, held in thick paint.",
     description:
-      "Aerial fairways, bunkers and gilded surfaces painted in thick impasto and tiled into calm, repeating pattern. Deep greens and burnished gold, composed to sit quietly behind icons on both iPhone and MacBook.",
+      "Ten studies of the hour when the course empties: greens, flagsticks and burnished surfaces built up in heavy impasto, then lit from one low angle. Deep green and warm gold, kept intentionally quiet in the centre so widgets and icons stay readable — delivered in both 9:16 for iPhone and 16:9 for MacBook.",
     priceCents: 499,
     compareAtCents: 899,
     wallpaperCount: 10,
