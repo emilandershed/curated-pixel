@@ -1,14 +1,14 @@
 import {
   BUNDLE_AVAILABLE,
-  allAlbums,
+  albums,
   bundle,
   getAlbumBySlug,
 } from "@/config/products";
 
 export type CartLine = { id: string; kind: "album" | "bundle"; quantity: 1 };
 
-/** Sum of every album in the full catalogue bought individually. */
-export const catalogueTotalCents = allAlbums.reduce((n, a) => n + a.priceCents, 0);
+/** Sum of every purchasable album bought individually. */
+export const catalogueTotalCents = albums.reduce((n, a) => n + a.priceCents, 0);
 
 /** What the bundle saves versus buying everything separately. */
 export const bundleSavingsCents = catalogueTotalCents - bundle.priceCents;

@@ -320,9 +320,9 @@ const seeds: AlbumSeed[] = [
     slug: "golf-hour",
     title: "Golf Hour",
     theme: "Pattern",
-    blurb: "The course, repeated until it becomes ornament.",
+    blurb: "The last light of the round, held in thick paint.",
     description:
-      "Aerial fairways, bunkers and gilded surfaces painted in thick impasto and tiled into calm, repeating pattern. Deep greens and burnished gold, composed to sit quietly behind icons on both iPhone and MacBook.",
+      "Ten studies of the hour when the course empties: greens, flagsticks and burnished surfaces built up in heavy impasto, then lit from one low angle. Deep green and warm gold, kept intentionally quiet in the centre so widgets and icons stay readable — delivered in both 9:16 for iPhone and 16:9 for MacBook.",
     priceCents: 499,
     compareAtCents: 899,
     wallpaperCount: 10,
@@ -349,8 +349,8 @@ const seeds: AlbumSeed[] = [
  */
 export const AVAILABLE_ALBUM_SLUGS: readonly string[] = ["tour-kit", "golf-hour"];
 
-/** The bundle promises the whole library, so it stays off until it's true. */
-export const BUNDLE_AVAILABLE = false;
+/** The pack only covers the albums listed in AVAILABLE_ALBUM_SLUGS. */
+export const BUNDLE_AVAILABLE = true;
 
 /** Every album that exists in the catalogue, available or not. */
 export const allAlbums: Album[] = seeds.map(({ palette, ...album }) => ({
@@ -366,11 +366,11 @@ export const albums: Album[] = allAlbums.filter((a) => isAlbumAvailable(a.slug))
 export const bundle = {
   id: "all-in-one",
   slug: "bundle",
-  title: "The All-in-One Bundle",
-  blurb: "Every album, every format, one price — including everything released next.",
+  title: "The Two-Album Pack",
+  blurb: "Tour Kit and Golf Hour together, both formats, one price.",
   description:
-    "The complete library in both iPhone and MacBook formats, plus every album published from here on. One purchase, permanent access.",
-  priceCents: 4900,
+    "Both albums in the store today — Tour Kit and Golf Hour — in iPhone and MacBook format. Twenty wallpapers, one purchase, instant download.",
+  priceCents: 799,
   gradient: ["oklch(0.9 0.03 80)", "oklch(0.6 0.06 250)", "oklch(0.2 0.04 270)"] as [
     string,
     string,
