@@ -347,7 +347,7 @@ const seeds: AlbumSeed[] = [
  * purchasable or browsable; everything else is invisible to the storefront AND
  * rejected server-side during price resolution (see `src/lib/pricing.ts`).
  */
-export const AVAILABLE_ALBUM_SLUGS: readonly string[] = ["tour-kit"];
+export const AVAILABLE_ALBUM_SLUGS: readonly string[] = ["tour-kit", "golf-hour"];
 
 /** The bundle promises the whole library, so it stays off until it's true. */
 export const BUNDLE_AVAILABLE = false;
