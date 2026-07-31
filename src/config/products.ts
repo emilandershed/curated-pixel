@@ -281,7 +281,8 @@ const seeds: AlbumSeed[] = [
     blurb: "What fits in the bag matters. What happens between shots matters more.",
     description:
       "Aerial studies of the course itself — fairways, bunkers, water and the quiet figures moving through them. Each piece composed in thick, sculpted colour to sit calmly behind your icons.",
-    priceCents: 699,
+    priceCents: 499,
+    compareAtCents: 899,
     wallpaperCount: 10,
     featured: false,
     coverSrc: tourKitAlbumCover.url,
