@@ -92,7 +92,7 @@ function Home() {
               </Button>
               {BUNDLE_AVAILABLE && (
                 <Button asChild size="lg" variant="outline">
-                  <Link to="/bundle">Get everything · {formatPrice(bundle.priceCents)}</Link>
+                  <Link to="/bundle">Get both albums · {formatPrice(bundle.priceCents)}</Link>
                 </Button>
               )}
             </div>
