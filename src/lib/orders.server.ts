@@ -5,7 +5,7 @@
  * are reachable from the browser — a buyer only ever sees their own order via
  * the unguessable `access_token` handed to them at checkout.
  */
-import { allAlbums, albumDownloadKey, bundle } from "@/config/products";
+import { albums, allAlbums, albumDownloadKey, bundle } from "@/config/products";
 import { DOWNLOAD_TOKEN_VALID_DAYS } from "@/config/brand";
 import {
   resolveLinePriceCents,
@@ -72,9 +72,10 @@ export function resolveOrderLines(lines: CartLine[]): ResolvedLine[] {
 
 /** Which albums a set of purchased lines grants access to. */
 export function albumsForLines(lines: ResolvedLine[]) {
-  // Grants are resolved against the FULL catalogue so historical orders (and any
-  // future bundle order) still fulfil even while albums are hidden from the shop.
-  if (lines.some((l) => l.kind === "bundle" && l.productId === bundle.id)) return allAlbums;
+  // Individual album grants resolve against the FULL catalogue so historical
+  // orders still fulfil even while an album is hidden from the shop. The pack
+  // only ever grants the albums that are purchasable today.
+  if (lines.some((l) => l.kind === "bundle" && l.productId === bundle.id)) return albums;
   const slugs = new Set(lines.filter((l) => l.kind === "album").map((l) => l.productId));
   return allAlbums.filter((album) => slugs.has(album.slug));
 }

@@ -349,8 +349,8 @@ const seeds: AlbumSeed[] = [
  */
 export const AVAILABLE_ALBUM_SLUGS: readonly string[] = ["tour-kit", "golf-hour"];
 
-/** The bundle promises the whole library, so it stays off until it's true. */
-export const BUNDLE_AVAILABLE = false;
+/** The pack only covers the albums listed in AVAILABLE_ALBUM_SLUGS. */
+export const BUNDLE_AVAILABLE = true;
 
 /** Every album that exists in the catalogue, available or not. */
 export const allAlbums: Album[] = seeds.map(({ palette, ...album }) => ({
