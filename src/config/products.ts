@@ -56,6 +56,9 @@ import tourKit07 from "@/assets/tour-kit-07.jpg.asset.json";
 import tourKit08 from "@/assets/tour-kit-08.jpg.asset.json";
 import tourKit09 from "@/assets/tour-kit-09.jpg.asset.json";
 import tourKit10 from "@/assets/tour-kit-10.jpg.asset.json";
+import golfHour01 from "@/assets/golf-hour-01.jpg.asset.json";
+import golfHour02 from "@/assets/golf-hour-02.jpg.asset.json";
+import golfHour03 from "@/assets/golf-hour-03.jpg.asset.json";
 
 /**
  * Real, delivered preview art keyed by `${albumId}-${index}`.
