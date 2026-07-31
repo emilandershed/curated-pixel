@@ -31,6 +31,8 @@ export type Album = {
   blurb: string;
   description: string;
   priceCents: number;
+  /** Original price when the album is on sale. Display only. */
+  compareAtCents?: number;
   wallpaperCount: number;
   featured: boolean;
   /** Low-res, watermarked 16:9 cover. Public. Null = gradient placeholder. */
