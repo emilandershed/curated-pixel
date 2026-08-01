@@ -18,29 +18,4 @@ export type Review = {
 
 export const reviewsAreSampleContent = true;
 
-export const reviews: Review[] = [
-  {
-    id: "r1",
-    name: "Sample reviewer",
-    location: "Copenhagen",
-    rating: 5,
-    quote:
-      "Placeholder testimonial text. Replace with a real, attributable customer quote before launch.",
-  },
-  {
-    id: "r2",
-    name: "Sample reviewer",
-    location: "Berlin",
-    rating: 5,
-    quote:
-      "Placeholder testimonial text. Replace with a real, attributable customer quote before launch.",
-  },
-  {
-    id: "r3",
-    name: "Sample reviewer",
-    location: "Stockholm",
-    rating: 4,
-    quote:
-      "Placeholder testimonial text. Replace with a real, attributable customer quote before launch.",
-  },
-];
+export const reviews: Review[] = [];
