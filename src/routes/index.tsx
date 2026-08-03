@@ -223,7 +223,16 @@ function Home() {
             />
           </Reveal>
           <Reveal className="mt-12">
-            <QualitySlider gradient={albums[0].gradient} />
+            <QualitySlider
+              gradient={albums[0].gradient}
+              previewSrc={
+                albums[0].coverSrc ??
+                albums[0].homeCoverSrc ??
+                albums[0].wallpapers[0]?.previewSrc ??
+                null
+              }
+              alt={albums[0].title}
+            />
           </Reveal>
         </div>
       </section>
@@ -239,7 +248,15 @@ function Home() {
           />
         </Reveal>
         <Reveal className="mt-16" delay={100}>
-          <DeviceMockups gradient={albums[albums.length - 1].gradient} />
+          <DeviceMockups
+            gradient={albums[albums.length - 1].gradient}
+            previewSrc={
+              albums.find((a) => a.wallpapers[0]?.previewSrc)?.wallpapers[0]?.previewSrc ??
+              albums.find((a) => a.coverSrc)?.coverSrc ??
+              null
+            }
+            alt="Wallpaper preview shown on MacBook and iPhone"
+          />
         </Reveal>
       </section>
 
