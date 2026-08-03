@@ -86,7 +86,13 @@ function BundlePage() {
         <div className="grid grid-cols-2 gap-3">
           {albums.map((album) => (
             <div key={album.id} className="overflow-hidden shadow-frame">
-              <PreviewTile gradient={album.gradient} ratio="mobile" watermark={false} />
+              <PreviewTile
+                gradient={album.gradient}
+                previewSrc={album.wallpapers[0]?.previewSrc ?? album.coverSrc ?? null}
+                alt={album.title}
+                ratio="mobile"
+                watermark={false}
+              />
             </div>
           ))}
         </div>
