@@ -8,7 +8,7 @@ import type { Album } from "@/config/products";
 import { useCart } from "@/lib/cart";
 
 export function AlbumCard({ album, index = 0 }: { album: Album; index?: number }) {
-  const hoverGradient = album.wallpapers[1]?.gradient ?? album.gradient;
+  const hoverSrc = album.wallpapers[1]?.previewSrc ?? null;
   const { add, has } = useCart();
   const navigate = useNavigate();
   const inCart = has(album.slug);
@@ -28,9 +28,17 @@ export function AlbumCard({ album, index = 0 }: { album: Album; index?: number }
           <div className="transition-transform duration-700 ease-out group-hover:scale-[1.02]">
             <PreviewTile gradient={album.gradient} previewSrc={album.coverSrc ?? null} alt={album.title} ratio="desktop" watermark={false} />
           </div>
-          <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-            <PreviewTile gradient={hoverGradient} ratio="desktop" watermark={false} />
-          </div>
+          {hoverSrc && (
+            <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              <PreviewTile
+                gradient={album.gradient}
+                previewSrc={hoverSrc}
+                alt={album.title}
+                ratio="desktop"
+                watermark={false}
+              />
+            </div>
+          )}
           <span className="absolute left-3 top-3 bg-background/85 px-2 py-1 text-[10px] uppercase tracking-[0.16em] text-foreground backdrop-blur">
             {album.theme}
           </span>
