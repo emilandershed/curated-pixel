@@ -250,12 +250,8 @@ function Home() {
         <Reveal className="mt-16" delay={100}>
           <DeviceMockups
             gradient={albums[albums.length - 1].gradient}
-            previewSrc={
-              albums.find((a) => a.wallpapers[0]?.previewSrc)?.wallpapers[0]?.previewSrc ??
-              albums.find((a) => a.coverSrc)?.coverSrc ??
-              null
-            }
-            alt="Wallpaper preview shown on MacBook and iPhone"
+            previewSrc={null}
+            alt="Wallpaper formats shown on MacBook and iPhone"
           />
         </Reveal>
       </section>
