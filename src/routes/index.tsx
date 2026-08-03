@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Download, Layers, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Layers, ShieldCheck, Sparkles } from "lucide-react";
 
 import { AlbumCard } from "@/components/album-card";
 import { DeviceMockups } from "@/components/device-mockups";
