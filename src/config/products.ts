@@ -66,6 +66,16 @@ import golfHour07 from "@/assets/golf-hour-07.jpg.asset.json";
 import golfHour08 from "@/assets/golf-hour-08.jpg.asset.json";
 import golfHour09 from "@/assets/golf-hour-09.jpg.asset.json";
 import golfHour10 from "@/assets/golf-hour-10.jpg.asset.json";
+import whileTheySleep01 from "@/assets/while-they-sleep-01.jpg.asset.json";
+import whileTheySleep02 from "@/assets/while-they-sleep-02.jpg.asset.json";
+import whileTheySleep03 from "@/assets/while-they-sleep-03.jpg.asset.json";
+import whileTheySleep04 from "@/assets/while-they-sleep-04.jpg.asset.json";
+import whileTheySleep05 from "@/assets/while-they-sleep-05.jpg.asset.json";
+import whileTheySleep06 from "@/assets/while-they-sleep-06.jpg.asset.json";
+import whileTheySleep07 from "@/assets/while-they-sleep-07.jpg.asset.json";
+import whileTheySleep08 from "@/assets/while-they-sleep-08.jpg.asset.json";
+import whileTheySleep09 from "@/assets/while-they-sleep-09.jpg.asset.json";
+import whileTheySleep10 from "@/assets/while-they-sleep-10.jpg.asset.json";
 
 /**
  * Real, delivered preview art keyed by `${albumId}-${index}`.
