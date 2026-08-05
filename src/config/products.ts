@@ -77,6 +77,17 @@ import whileTheySleep08 from "@/assets/while-they-sleep-08.jpg.asset.json";
 import whileTheySleep09 from "@/assets/while-they-sleep-09.jpg.asset.json";
 import whileTheySleep10 from "@/assets/while-they-sleep-10.jpg.asset.json";
 import whileTheySleepCover from "@/assets/while-they-sleep-cover.jpg.asset.json";
+import westCoastNight01 from "@/assets/west-coast-night-01.jpg.asset.json";
+import westCoastNight02 from "@/assets/west-coast-night-02.jpg.asset.json";
+import westCoastNight03 from "@/assets/west-coast-night-03.jpg.asset.json";
+import westCoastNight04 from "@/assets/west-coast-night-04.jpg.asset.json";
+import westCoastNight05 from "@/assets/west-coast-night-05.jpg.asset.json";
+import westCoastNight06 from "@/assets/west-coast-night-06.jpg.asset.json";
+import westCoastNight07 from "@/assets/west-coast-night-07.jpg.asset.json";
+import westCoastNight08 from "@/assets/west-coast-night-08.jpg.asset.json";
+import westCoastNight09 from "@/assets/west-coast-night-09.jpg.asset.json";
+import westCoastNight10 from "@/assets/west-coast-night-10.jpg.asset.json";
+import westCoastNightCover from "@/assets/west-coast-night-cover.jpg.asset.json";
 
 /**
  * Real, delivered preview art keyed by `${albumId}-${index}`.
@@ -113,6 +124,16 @@ const previewOverrides: Record<string, string> = {
   "while-they-sleep-8": whileTheySleep08.url,
   "while-they-sleep-9": whileTheySleep09.url,
   "while-they-sleep-10": whileTheySleep10.url,
+  "west-coast-night-1": westCoastNight01.url,
+  "west-coast-night-2": westCoastNight02.url,
+  "west-coast-night-3": westCoastNight03.url,
+  "west-coast-night-4": westCoastNight04.url,
+  "west-coast-night-5": westCoastNight05.url,
+  "west-coast-night-6": westCoastNight06.url,
+  "west-coast-night-7": westCoastNight07.url,
+  "west-coast-night-8": westCoastNight08.url,
+  "west-coast-night-9": westCoastNight09.url,
+  "west-coast-night-10": westCoastNight10.url,
 };
 
 const makeWallpapers = (
@@ -378,6 +399,27 @@ const seeds: AlbumSeed[] = [
       ["oklch(0.42 0.06 70)", "oklch(0.24 0.05 60)", "oklch(0.12 0.03 55)"],
     ],
   },
+  {
+    id: "west-coast-night",
+    slug: "west-coast-night",
+    title: "West Coast Night",
+    theme: "Neon",
+    blurb: "Everything closed. Everything still lit.",
+    description:
+      "Ten empty places after closing time: a diner still lit with nobody in it, a motel sign burning over a dark car park, a road going straight out of frame. Each frame is built on one neon colour and the wet ground that mirrors it, everything else in charcoal and black. No people, no words — just the light. Delivered in both iPhone and desktop format.",
+    priceCents: 499,
+    compareAtCents: 899,
+    wallpaperCount: 10,
+    featured: false,
+    coverSrc: westCoastNightCover.url,
+    releasedAt: "2026-08-05",
+    gradient: ["oklch(0.42 0.14 20)", "oklch(0.24 0.10 300)", "oklch(0.10 0.03 260)"],
+    palette: [
+      ["oklch(0.48 0.18 350)", "oklch(0.26 0.12 320)", "oklch(0.10 0.03 280)"],
+      ["oklch(0.52 0.14 60)", "oklch(0.28 0.10 40)", "oklch(0.10 0.03 30)"],
+      ["oklch(0.46 0.12 200)", "oklch(0.24 0.09 220)", "oklch(0.10 0.03 240)"],
+    ],
+  },
 ];
 
 
@@ -389,7 +431,12 @@ const seeds: AlbumSeed[] = [
  * purchasable or browsable; everything else is invisible to the storefront AND
  * rejected server-side during price resolution (see `src/lib/pricing.ts`).
  */
-export const AVAILABLE_ALBUM_SLUGS: readonly string[] = ["tour-kit", "golf-hour", "while-they-sleep"];
+export const AVAILABLE_ALBUM_SLUGS: readonly string[] = [
+  "tour-kit",
+  "golf-hour",
+  "while-they-sleep",
+  "west-coast-night",
+];
 
 /** The pack only covers the albums listed in AVAILABLE_ALBUM_SLUGS. */
 export const BUNDLE_AVAILABLE = true;
@@ -409,9 +456,9 @@ export const bundle = {
   id: "all-in-one",
   slug: "bundle",
   title: "The Complete Pack",
-  blurb: "All three albums together, both formats, one price.",
+  blurb: "All four albums together, both formats, one price.",
   description:
-    "Every album in the store — Tour Kit, Golf Hour and While They Sleep — in iPhone and MacBook format. Thirty wallpapers, one purchase, instant download.",
+    "Every album in the store — Tour Kit, Golf Hour, While They Sleep and West Coast Night — in iPhone and MacBook format. Forty wallpapers, one purchase, instant download.",
   priceCents: 799,
   gradient: ["oklch(0.9 0.03 80)", "oklch(0.6 0.06 250)", "oklch(0.2 0.04 270)"] as [
     string,
