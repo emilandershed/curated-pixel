@@ -431,7 +431,12 @@ const seeds: AlbumSeed[] = [
  * purchasable or browsable; everything else is invisible to the storefront AND
  * rejected server-side during price resolution (see `src/lib/pricing.ts`).
  */
-export const AVAILABLE_ALBUM_SLUGS: readonly string[] = ["tour-kit", "golf-hour", "while-they-sleep"];
+export const AVAILABLE_ALBUM_SLUGS: readonly string[] = [
+  "tour-kit",
+  "golf-hour",
+  "while-they-sleep",
+  "west-coast-night",
+];
 
 /** The pack only covers the albums listed in AVAILABLE_ALBUM_SLUGS. */
 export const BUNDLE_AVAILABLE = true;
@@ -451,9 +456,9 @@ export const bundle = {
   id: "all-in-one",
   slug: "bundle",
   title: "The Complete Pack",
-  blurb: "All three albums together, both formats, one price.",
+  blurb: "All four albums together, both formats, one price.",
   description:
-    "Every album in the store — Tour Kit, Golf Hour and While They Sleep — in iPhone and MacBook format. Thirty wallpapers, one purchase, instant download.",
+    "Every album in the store — Tour Kit, Golf Hour, While They Sleep and West Coast Night — in iPhone and MacBook format. Forty wallpapers, one purchase, instant download.",
   priceCents: 799,
   gradient: ["oklch(0.9 0.03 80)", "oklch(0.6 0.06 250)", "oklch(0.2 0.04 270)"] as [
     string,
