@@ -66,6 +66,16 @@ import golfHour07 from "@/assets/golf-hour-07.jpg.asset.json";
 import golfHour08 from "@/assets/golf-hour-08.jpg.asset.json";
 import golfHour09 from "@/assets/golf-hour-09.jpg.asset.json";
 import golfHour10 from "@/assets/golf-hour-10.jpg.asset.json";
+import whileTheySleep01 from "@/assets/while-they-sleep-01.jpg.asset.json";
+import whileTheySleep02 from "@/assets/while-they-sleep-02.jpg.asset.json";
+import whileTheySleep03 from "@/assets/while-they-sleep-03.jpg.asset.json";
+import whileTheySleep04 from "@/assets/while-they-sleep-04.jpg.asset.json";
+import whileTheySleep05 from "@/assets/while-they-sleep-05.jpg.asset.json";
+import whileTheySleep06 from "@/assets/while-they-sleep-06.jpg.asset.json";
+import whileTheySleep07 from "@/assets/while-they-sleep-07.jpg.asset.json";
+import whileTheySleep08 from "@/assets/while-they-sleep-08.jpg.asset.json";
+import whileTheySleep09 from "@/assets/while-they-sleep-09.jpg.asset.json";
+import whileTheySleep10 from "@/assets/while-they-sleep-10.jpg.asset.json";
 
 /**
  * Real, delivered preview art keyed by `${albumId}-${index}`.
@@ -92,6 +102,16 @@ const previewOverrides: Record<string, string> = {
   "golf-hour-8": golfHour08.url,
   "golf-hour-9": golfHour09.url,
   "golf-hour-10": golfHour10.url,
+  "while-they-sleep-1": whileTheySleep01.url,
+  "while-they-sleep-2": whileTheySleep02.url,
+  "while-they-sleep-3": whileTheySleep03.url,
+  "while-they-sleep-4": whileTheySleep04.url,
+  "while-they-sleep-5": whileTheySleep05.url,
+  "while-they-sleep-6": whileTheySleep06.url,
+  "while-they-sleep-7": whileTheySleep07.url,
+  "while-they-sleep-8": whileTheySleep08.url,
+  "while-they-sleep-9": whileTheySleep09.url,
+  "while-they-sleep-10": whileTheySleep10.url,
 };
 
 const makeWallpapers = (
@@ -334,6 +354,28 @@ const seeds: AlbumSeed[] = [
       ["oklch(0.74 0.09 125)", "oklch(0.5 0.09 130)", "oklch(0.28 0.06 135)"],
       ["oklch(0.7 0.085 115)", "oklch(0.46 0.085 120)", "oklch(0.26 0.055 128)"],
       ["oklch(0.85 0.1 90)", "oklch(0.66 0.11 85)", "oklch(0.4 0.08 80)"],
+    ],
+  },
+  {
+    id: "while-they-sleep",
+    slug: "while-they-sleep",
+    title: "While They Sleep",
+    theme: "Statement",
+    blurb: "One night. One morning. No witnesses.",
+    description:
+      "One figure, one night, ten frames: the alarm at 4:44, the empty street in the rain, the empty gym, the walk home at sunrise. Shot dark and quiet with a single light source in every frame. Each wallpaper carries one line of the kind you say to yourself — and every one also comes without the words, so you can keep the mood without the message. Composed around the lock screen clock, so nothing that matters sits behind it.",
+    priceCents: 499,
+    compareAtCents: 899,
+    wallpaperCount: 10,
+    featured: true,
+    // TODO: swap to the dedicated 16:9 album cover once it is uploaded.
+    coverSrc: whileTheySleep01.url,
+    releasedAt: "2026-08-05",
+    gradient: ["oklch(0.30 0.03 250)", "oklch(0.18 0.03 255)", "oklch(0.10 0.02 260)"],
+    palette: [
+      ["oklch(0.32 0.03 250)", "oklch(0.18 0.03 255)", "oklch(0.09 0.02 260)"],
+      ["oklch(0.28 0.04 240)", "oklch(0.16 0.03 250)", "oklch(0.08 0.02 258)"],
+      ["oklch(0.42 0.06 70)", "oklch(0.24 0.05 60)", "oklch(0.12 0.03 55)"],
     ],
   },
 ];
