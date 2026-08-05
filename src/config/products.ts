@@ -77,6 +77,17 @@ import whileTheySleep08 from "@/assets/while-they-sleep-08.jpg.asset.json";
 import whileTheySleep09 from "@/assets/while-they-sleep-09.jpg.asset.json";
 import whileTheySleep10 from "@/assets/while-they-sleep-10.jpg.asset.json";
 import whileTheySleepCover from "@/assets/while-they-sleep-cover.jpg.asset.json";
+import westCoastNight01 from "@/assets/west-coast-night-01.jpg.asset.json";
+import westCoastNight02 from "@/assets/west-coast-night-02.jpg.asset.json";
+import westCoastNight03 from "@/assets/west-coast-night-03.jpg.asset.json";
+import westCoastNight04 from "@/assets/west-coast-night-04.jpg.asset.json";
+import westCoastNight05 from "@/assets/west-coast-night-05.jpg.asset.json";
+import westCoastNight06 from "@/assets/west-coast-night-06.jpg.asset.json";
+import westCoastNight07 from "@/assets/west-coast-night-07.jpg.asset.json";
+import westCoastNight08 from "@/assets/west-coast-night-08.jpg.asset.json";
+import westCoastNight09 from "@/assets/west-coast-night-09.jpg.asset.json";
+import westCoastNight10 from "@/assets/west-coast-night-10.jpg.asset.json";
+import westCoastNightCover from "@/assets/west-coast-night-cover.jpg.asset.json";
 
 /**
  * Real, delivered preview art keyed by `${albumId}-${index}`.
