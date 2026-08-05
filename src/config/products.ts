@@ -459,7 +459,7 @@ export const bundle = {
   blurb: "All four albums together, both formats, one price.",
   description:
     "Every album in the store — Tour Kit, Golf Hour, While They Sleep and West Coast Night — in iPhone and MacBook format. Forty wallpapers, one purchase, instant download.",
-  priceCents: 799,
+  priceCents: 999,
   gradient: ["oklch(0.9 0.03 80)", "oklch(0.6 0.06 250)", "oklch(0.2 0.04 270)"] as [
     string,
     string,
@@ -481,6 +481,13 @@ export const featuredAlbums = () => {
 };
 
 export const totalWallpaperCount = albums.reduce((n, a) => n + a.wallpaperCount, 0);
+
+/**
+ * The most recently released available album — drives the homepage hero so
+ * every future release leads the site automatically.
+ */
+export const latestAlbum = () =>
+  [...albums].sort((a, b) => (a.releasedAt < b.releasedAt ? 1 : -1))[0];
 
 /**
  * Private storage key for an album's full-resolution archive (both formats).
