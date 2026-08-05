@@ -11,8 +11,8 @@ import { BUNDLE_AVAILABLE, albums, bundle, totalWallpaperCount } from "@/config/
 import { useCart } from "@/lib/cart";
 import { bundleSavingsCents, bundleSavingsPercent, catalogueTotalCents } from "@/lib/pricing";
 
-const title = `${bundle.title} — both albums, one price | ${brand.name}`;
-const description = `Both albums and all ${totalWallpaperCount} wallpapers in iPhone and MacBook format for ${formatPrice(bundle.priceCents)}.`;
+const title = `${bundle.title} — every album, one price | ${brand.name}`;
+const description = `All ${albums.length} albums and all ${totalWallpaperCount} wallpapers in iPhone and MacBook format for ${formatPrice(bundle.priceCents)}.`;
 
 export const Route = createFileRoute("/bundle")({
   // The pack is only purchasable while more than one album is available.
@@ -47,9 +47,9 @@ function BundlePage() {
 
           <ul className="mt-8 space-y-2 text-sm">
             {[
-              `Both albums · ${totalWallpaperCount} wallpapers`,
+              `All ${albums.length} albums · ${totalWallpaperCount} wallpapers`,
               "Both formats for every single frame",
-              "Cheaper than buying the two albums separately",
+              "Cheaper than buying the albums separately",
               "Instant download, links valid for 90 days",
             ].map((item) => (
               <li key={item} className="flex items-center gap-2">
@@ -100,7 +100,7 @@ function BundlePage() {
 
       <section className="mt-24">
         <Reveal>
-          <SectionHeading eyebrow="Included" title="Both albums included." />
+          <SectionHeading eyebrow="Included" title="Every album included." />
         </Reveal>
         <div className="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           {albums.map((album, i) => (
