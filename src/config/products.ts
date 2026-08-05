@@ -76,6 +76,7 @@ import whileTheySleep07 from "@/assets/while-they-sleep-07.jpg.asset.json";
 import whileTheySleep08 from "@/assets/while-they-sleep-08.jpg.asset.json";
 import whileTheySleep09 from "@/assets/while-they-sleep-09.jpg.asset.json";
 import whileTheySleep10 from "@/assets/while-they-sleep-10.jpg.asset.json";
+import whileTheySleepCover from "@/assets/while-they-sleep-cover.jpg.asset.json";
 
 /**
  * Real, delivered preview art keyed by `${albumId}-${index}`.
