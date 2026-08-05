@@ -356,6 +356,28 @@ const seeds: AlbumSeed[] = [
       ["oklch(0.85 0.1 90)", "oklch(0.66 0.11 85)", "oklch(0.4 0.08 80)"],
     ],
   },
+  {
+    id: "while-they-sleep",
+    slug: "while-they-sleep",
+    title: "While They Sleep",
+    theme: "Statement",
+    blurb: "One night. One morning. No witnesses.",
+    description:
+      "One figure, one night, ten frames: the alarm at 4:44, the empty street in the rain, the empty gym, the walk home at sunrise. Shot dark and quiet with a single light source in every frame. Each wallpaper carries one line of the kind you say to yourself — and every one also comes without the words, so you can keep the mood without the message. Composed around the lock screen clock, so nothing that matters sits behind it.",
+    priceCents: 499,
+    compareAtCents: 899,
+    wallpaperCount: 10,
+    featured: true,
+    // TODO: swap to the dedicated 16:9 album cover once it is uploaded.
+    coverSrc: whileTheySleep01.url,
+    releasedAt: "2026-08-05",
+    gradient: ["oklch(0.30 0.03 250)", "oklch(0.18 0.03 255)", "oklch(0.10 0.02 260)"],
+    palette: [
+      ["oklch(0.32 0.03 250)", "oklch(0.18 0.03 255)", "oklch(0.09 0.02 260)"],
+      ["oklch(0.28 0.04 240)", "oklch(0.16 0.03 250)", "oklch(0.08 0.02 258)"],
+      ["oklch(0.42 0.06 70)", "oklch(0.24 0.05 60)", "oklch(0.12 0.03 55)"],
+    ],
+  },
 ];
 
 
