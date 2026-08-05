@@ -125,7 +125,7 @@ function Home() {
             {BUNDLE_AVAILABLE && (
               <p className="animate-rise mt-3 text-xs text-muted-foreground">
                 <Link to="/bundle" className="underline underline-offset-4 hover:text-foreground">
-                  Or get both albums for {formatPrice(bundle.priceCents)}
+                  Or get all {albums.length} albums for {formatPrice(bundle.priceCents)}
                 </Link>
               </p>
             )}
