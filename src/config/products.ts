@@ -124,6 +124,16 @@ const previewOverrides: Record<string, string> = {
   "while-they-sleep-8": whileTheySleep08.url,
   "while-they-sleep-9": whileTheySleep09.url,
   "while-they-sleep-10": whileTheySleep10.url,
+  "west-coast-night-1": westCoastNight01.url,
+  "west-coast-night-2": westCoastNight02.url,
+  "west-coast-night-3": westCoastNight03.url,
+  "west-coast-night-4": westCoastNight04.url,
+  "west-coast-night-5": westCoastNight05.url,
+  "west-coast-night-6": westCoastNight06.url,
+  "west-coast-night-7": westCoastNight07.url,
+  "west-coast-night-8": westCoastNight08.url,
+  "west-coast-night-9": westCoastNight09.url,
+  "west-coast-night-10": westCoastNight10.url,
 };
 
 const makeWallpapers = (
