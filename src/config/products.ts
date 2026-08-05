@@ -439,7 +439,7 @@ export const AVAILABLE_ALBUM_SLUGS: readonly string[] = [
 ];
 
 /** The pack only covers the albums listed in AVAILABLE_ALBUM_SLUGS. */
-export const BUNDLE_AVAILABLE = true;
+export const BUNDLE_AVAILABLE = false;
 
 /** Every album that exists in the catalogue, available or not. */
 export const allAlbums: Album[] = seeds.map(({ palette, ...album }) => ({
