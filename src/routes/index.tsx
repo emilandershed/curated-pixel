@@ -17,8 +17,8 @@ import {
 import { brand, formatPrice } from "@/config/brand";
 import { faq } from "@/config/faq";
 import { reviews, reviewsAreSampleContent } from "@/config/reviews";
-import { BUNDLE_AVAILABLE, albums, bundle, featuredAlbums, totalWallpaperCount } from "@/config/products";
-import { bundleSavingsCents, bundleSavingsPercent } from "@/lib/pricing";
+import { BUNDLE_AVAILABLE, albums, bundle, featuredAlbums, latestAlbum, totalWallpaperCount } from "@/config/products";
+import { bundleSavingsCents, bundleSavingsPercent, catalogueTotalCents } from "@/lib/pricing";
 
 const title = `${brand.name} — Digital wallpapers for iPhone & MacBook`;
 const description = `${totalWallpaperCount} curated wallpapers across ${albums.length} ${albums.length === 1 ? "album" : "albums"}. Every frame delivered in both 9:16 and 16:9, at full resolution, instantly after purchase.`;
@@ -54,7 +54,7 @@ const valueProps = [
 ];
 
 function Home() {
-  const hero = albums[0];
+  const hero = latestAlbum();
   const featured = featuredAlbums();
   const entryAlbum = albums.reduce((a, b) => (a.priceCents <= b.priceCents ? a : b), albums[0]);
   const entryOnSale = Boolean(
@@ -158,6 +158,54 @@ function Home() {
         </Reveal>
       </section>
 
+      {/* Bundle offer — the main offer, directly after the album grid */}
+      {BUNDLE_AVAILABLE && (
+        <section className="border-y border-border bg-secondary/40">
+          <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+            <Reveal className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
+              <div>
+                <p className="eyebrow">Best value</p>
+                <h2 className="font-display mt-3 text-4xl leading-[1.05] sm:text-6xl">
+                  {bundle.title}
+                </h2>
+                <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground">
+                  All {albums.length} albums · {totalWallpaperCount} wallpapers · iPhone and
+                  MacBook formats included.
+                </p>
+                <div className="mt-8 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+                  <span className="font-display text-5xl tabular-nums sm:text-6xl">
+                    {formatPrice(bundle.priceCents)}
+                  </span>
+                  <span className="text-base tabular-nums text-muted-foreground line-through">
+                    {formatPrice(catalogueTotalCents)}
+                  </span>
+                  <span className="bg-foreground px-2 py-1 text-[11px] uppercase tracking-[0.14em] text-background">
+                    Save {bundleSavingsPercent}%
+                  </span>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  That's {formatPrice(bundleSavingsCents)} less than buying them one by one.
+                </p>
+                <Button asChild size="lg" className="mt-8 w-full sm:w-auto">
+                  <Link to="/bundle">
+                    Get all {albums.length} albums — {formatPrice(bundle.priceCents)}
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {albums.slice(0, 6).map((album) => (
+                  <div key={album.id} className="overflow-hidden shadow-frame">
+                    <PreviewTile gradient={album.gradient} previewSrc={(album.homeCoverSrc ?? album.coverSrc) ?? null} alt={album.title} ratio="square" watermark={false} />
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       {/* Value props */}
       <section className="border-y border-border">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-3 sm:px-8">
@@ -171,46 +219,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Bundle offer */}
-      {BUNDLE_AVAILABLE && (
-      <section className="mx-auto max-w-6xl px-5 py-24 sm:px-8">
-        <Reveal className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
-          <div>
-            <p className="eyebrow">The complete library</p>
-            <h2 className="font-display mt-3 text-4xl leading-[1.05] sm:text-5xl">
-              {bundle.title}
-            </h2>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground">
-              {bundle.description}
-            </p>
-            <div className="mt-8 flex items-baseline gap-4">
-              <span className="font-display text-4xl tabular-nums">
-                {formatPrice(bundle.priceCents)}
-              </span>
-              <span className="text-sm text-muted-foreground line-through tabular-nums">
-                {formatPrice(bundle.priceCents + bundleSavingsCents)}
-              </span>
-              <span className="bg-foreground px-2 py-1 text-[11px] uppercase tracking-[0.14em] text-background">
-                Save {bundleSavingsPercent}%
-              </span>
-            </div>
-            <Button asChild size="lg" className="mt-8">
-              <Link to="/bundle">
-                See what's included <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-
-          <div className="grid grid-cols-3 gap-3">
-            {albums.slice(0, 6).map((album) => (
-              <div key={album.id} className="overflow-hidden shadow-frame">
-                <PreviewTile gradient={album.gradient} previewSrc={(album.homeCoverSrc ?? album.coverSrc) ?? null} alt={album.title} ratio="square" watermark={false} />
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </section>
-      )}
 
       {/* Quality slider */}
       <section className="border-y border-border bg-secondary/40">
