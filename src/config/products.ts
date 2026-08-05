@@ -399,6 +399,27 @@ const seeds: AlbumSeed[] = [
       ["oklch(0.42 0.06 70)", "oklch(0.24 0.05 60)", "oklch(0.12 0.03 55)"],
     ],
   },
+  {
+    id: "west-coast-night",
+    slug: "west-coast-night",
+    title: "West Coast Night",
+    theme: "Neon",
+    blurb: "Everything closed. Everything still lit.",
+    description:
+      "Ten empty places after closing time: a diner still lit with nobody in it, a motel sign burning over a dark car park, a road going straight out of frame. Each frame is built on one neon colour and the wet ground that mirrors it, everything else in charcoal and black. No people, no words — just the light. Delivered in both iPhone and desktop format.",
+    priceCents: 499,
+    compareAtCents: 899,
+    wallpaperCount: 10,
+    featured: false,
+    coverSrc: westCoastNightCover.url,
+    releasedAt: "2026-08-05",
+    gradient: ["oklch(0.42 0.14 20)", "oklch(0.24 0.10 300)", "oklch(0.10 0.03 260)"],
+    palette: [
+      ["oklch(0.48 0.18 350)", "oklch(0.26 0.12 320)", "oklch(0.10 0.03 280)"],
+      ["oklch(0.52 0.14 60)", "oklch(0.28 0.10 40)", "oklch(0.10 0.03 30)"],
+      ["oklch(0.46 0.12 200)", "oklch(0.24 0.09 220)", "oklch(0.10 0.03 240)"],
+    ],
+  },
 ];
 
 
