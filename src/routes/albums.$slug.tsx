@@ -7,7 +7,7 @@ import { PreviewTile } from "@/components/preview-tile";
 import { Reveal } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { brand, formatPrice } from "@/config/brand";
-import { BUNDLE_AVAILABLE, bundle, getAlbumBySlug, type Wallpaper } from "@/config/products";
+import { BUNDLE_AVAILABLE, albums, bundle, getAlbumBySlug, totalWallpaperCount, type Wallpaper } from "@/config/products";
 import { useCart } from "@/lib/cart";
 import { bundleSavingsPercent } from "@/lib/pricing";
 
@@ -52,7 +52,7 @@ function AlbumPage() {
       </Button>
 
       <div className="grid gap-12 lg:grid-cols-[1.35fr_1fr]">
-        <div className="overflow-hidden shadow-lift">
+        <div className="self-start overflow-hidden shadow-lift">
           <PreviewTile gradient={album.gradient} previewSrc={album.coverSrc ?? null} alt={album.title} ratio="auto" eager />
         </div>
 
@@ -109,8 +109,9 @@ function AlbumPage() {
           {BUNDLE_AVAILABLE && (
           <div className="mt-8 border border-border bg-secondary/50 p-5">
             <p className="text-sm text-foreground">
-              Or take all {bundle.title.toLowerCase()} for {formatPrice(bundle.priceCents)} —{" "}
-              {bundleSavingsPercent}% off buying albums one by one.
+              Get all {albums.length} albums instead — {totalWallpaperCount} wallpapers for{" "}
+              {formatPrice(bundle.priceCents)}, {bundleSavingsPercent}% off buying them one by
+              one.
             </p>
             <Button asChild variant="outline" size="sm" className="mt-4">
               <Link to="/bundle">See the bundle</Link>
@@ -155,7 +156,12 @@ function AlbumPage() {
 
       <section className="mt-24">
         <h2 className="font-display text-3xl">Both formats, one purchase.</h2>
-        <DeviceMockups gradient={album.gradient} className="mt-12" />
+        <DeviceMockups
+          gradient={album.gradient}
+          previewSrc={album.coverSrc ?? album.wallpapers[0]?.previewSrc ?? null}
+          alt={`${album.title} shown on MacBook and iPhone`}
+          className="mt-12"
+        />
       </section>
     </div>
   );
