@@ -368,8 +368,7 @@ const seeds: AlbumSeed[] = [
     compareAtCents: 899,
     wallpaperCount: 10,
     featured: true,
-    // TODO: swap to the dedicated 16:9 album cover once it is uploaded.
-    coverSrc: whileTheySleep01.url,
+    coverSrc: whileTheySleepCover.url,
     releasedAt: "2026-08-05",
     gradient: ["oklch(0.30 0.03 250)", "oklch(0.18 0.03 255)", "oklch(0.10 0.02 260)"],
     palette: [
