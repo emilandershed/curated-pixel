@@ -102,6 +102,16 @@ const previewOverrides: Record<string, string> = {
   "golf-hour-8": golfHour08.url,
   "golf-hour-9": golfHour09.url,
   "golf-hour-10": golfHour10.url,
+  "while-they-sleep-1": whileTheySleep01.url,
+  "while-they-sleep-2": whileTheySleep02.url,
+  "while-they-sleep-3": whileTheySleep03.url,
+  "while-they-sleep-4": whileTheySleep04.url,
+  "while-they-sleep-5": whileTheySleep05.url,
+  "while-they-sleep-6": whileTheySleep06.url,
+  "while-they-sleep-7": whileTheySleep07.url,
+  "while-they-sleep-8": whileTheySleep08.url,
+  "while-they-sleep-9": whileTheySleep09.url,
+  "while-they-sleep-10": whileTheySleep10.url,
 };
 
 const makeWallpapers = (
