@@ -30,7 +30,7 @@ export const faq: FaqItem[] = [
     id: "resolution",
     question: "What resolution are the files?",
     answer:
-      "Mobile files are 1290 × 2796 or larger; desktop files are 3840 × 2160 or larger. They stay sharp on Pro Motion and Retina panels, and on 5K external displays.",
+      "Every wallpaper is delivered at full resolution for the device it was made for — sized for modern iPhone displays and for desktop, and graded to look sharp on Pro Motion, Retina, and OLED panels.",
   },
   {
     id: "previews",

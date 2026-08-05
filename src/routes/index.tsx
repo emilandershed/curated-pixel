@@ -48,8 +48,8 @@ const valueProps = [
   },
   {
     icon: Sparkles,
-    title: "Master-file resolution",
-    body: "Mobile from 1290 × 2796, desktop from 3840 × 2160. Graded for Retina and OLED panels.",
+    title: "Made for your screen",
+    body: "Every wallpaper is delivered at full resolution for the device it was made for — sized for modern iPhone displays and for desktop, and graded for Retina and OLED panels.",
   },
 ];
 
