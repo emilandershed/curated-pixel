@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as NightRouteImport } from './routes/night'
+import { Route as NeonRouteImport } from './routes/neon'
+import { Route as LitRouteImport } from './routes/lit'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
@@ -40,6 +42,16 @@ const ShopRoute = ShopRouteImport.update({
 const NightRoute = NightRouteImport.update({
   id: '/night',
   path: '/night',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NeonRoute = NeonRouteImport.update({
+  id: '/neon',
+  path: '/neon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LitRoute = LitRouteImport.update({
+  id: '/lit',
+  path: '/lit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -120,6 +132,8 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/lit': typeof LitRoute
+  '/neon': typeof NeonRoute
   '/night': typeof NightRoute
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
@@ -139,6 +153,8 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/lit': typeof LitRoute
+  '/neon': typeof NeonRoute
   '/night': typeof NightRoute
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
@@ -159,6 +175,8 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/lit': typeof LitRoute
+  '/neon': typeof NeonRoute
   '/night': typeof NightRoute
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
@@ -180,6 +198,8 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/lit'
+    | '/neon'
     | '/night'
     | '/shop'
     | '/thank-you'
@@ -199,6 +219,8 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/lit'
+    | '/neon'
     | '/night'
     | '/shop'
     | '/thank-you'
@@ -218,6 +240,8 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/lit'
+    | '/neon'
     | '/night'
     | '/shop'
     | '/thank-you'
@@ -238,6 +262,8 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  LitRoute: typeof LitRoute
+  NeonRoute: typeof NeonRoute
   NightRoute: typeof NightRoute
   ShopRoute: typeof ShopRoute
   ThankYouRoute: typeof ThankYouRoute
@@ -273,6 +299,20 @@ declare module '@tanstack/react-router' {
       path: '/night'
       fullPath: '/night'
       preLoaderRoute: typeof NightRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/neon': {
+      id: '/neon'
+      path: '/neon'
+      fullPath: '/neon'
+      preLoaderRoute: typeof NeonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lit': {
+      id: '/lit'
+      path: '/lit'
+      fullPath: '/lit'
+      preLoaderRoute: typeof LitRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -382,6 +422,8 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  LitRoute: LitRoute,
+  NeonRoute: NeonRoute,
   NightRoute: NightRoute,
   ShopRoute: ShopRoute,
   ThankYouRoute: ThankYouRoute,
@@ -398,3 +440,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
