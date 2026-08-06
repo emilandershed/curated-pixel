@@ -52,7 +52,8 @@ function ContactPage() {
         className="mt-12 space-y-5"
         onSubmit={async (event) => {
           event.preventDefault();
-          const form = new FormData(event.currentTarget);
+          const formEl = event.currentTarget;
+          const form = new FormData(formEl);
           const parsed = contactSchema.safeParse({
             name: form.get("name"),
             email: form.get("email"),
@@ -63,13 +64,30 @@ function ContactPage() {
             return;
           }
           setSending(true);
-          // Delivery is wired up once Cloud + email are connected.
-          await new Promise((r) => setTimeout(r, 400));
-          setSending(false);
-          toast.success("Thanks — your message is on its way.");
-          event.currentTarget.reset();
+          try {
+            const response = await fetch("/api/public/contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(parsed.data),
+            });
+            if (!response.ok) {
+              toast.error(
+                response.status === 429
+                  ? "Too many messages just now — please try again later, or email emil@andershed.se directly."
+                  : "Your message couldn't be sent. Please email emil@andershed.se directly.",
+              );
+              return;
+            }
+            toast.success("Thanks — your message is on its way.");
+            formEl.reset();
+          } catch {
+            toast.error("Your message couldn't be sent. Please email emil@andershed.se directly.");
+          } finally {
+            setSending(false);
+          }
         }}
       >
+
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
             <Label htmlFor="name">Name</Label>

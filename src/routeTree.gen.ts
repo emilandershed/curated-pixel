@@ -24,6 +24,7 @@ import { Route as LegalTermsRouteImport } from './routes/legal/terms'
 import { Route as LegalRefundsRouteImport } from './routes/legal/refunds'
 import { Route as LegalPrivacyRouteImport } from './routes/legal/privacy'
 import { Route as AlbumsSlugRouteImport } from './routes/albums.$slug'
+import { Route as ApiPublicResendDownloadRouteImport } from './routes/api/public/resend-download'
 import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
@@ -106,6 +107,11 @@ const AlbumsSlugRoute = AlbumsSlugRouteImport.update({
   path: '/albums/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicResendDownloadRoute = ApiPublicResendDownloadRouteImport.update({
+  id: '/api/public/resend-download',
+  path: '/api/public/resend-download',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicContactRoute = ApiPublicContactRouteImport.update({
   id: '/api/public/contact',
   path: '/api/public/contact',
@@ -155,6 +161,7 @@ export interface FileRoutesByFullPath {
   '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
   '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -178,6 +185,7 @@ export interface FileRoutesByTo {
   '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
   '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -202,6 +210,7 @@ export interface FileRoutesById {
   '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
   '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -227,6 +236,7 @@ export interface FileRouteTypes {
     | '/legal/refunds'
     | '/legal/terms'
     | '/api/public/contact'
+    | '/api/public/resend-download'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -250,6 +260,7 @@ export interface FileRouteTypes {
     | '/legal/refunds'
     | '/legal/terms'
     | '/api/public/contact'
+    | '/api/public/resend-download'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -273,6 +284,7 @@ export interface FileRouteTypes {
     | '/legal/refunds'
     | '/legal/terms'
     | '/api/public/contact'
+    | '/api/public/resend-download'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -297,6 +309,7 @@ export interface RootRouteChildren {
   LegalRefundsRoute: typeof LegalRefundsRoute
   LegalTermsRoute: typeof LegalTermsRoute
   ApiPublicContactRoute: typeof ApiPublicContactRoute
+  ApiPublicResendDownloadRoute: typeof ApiPublicResendDownloadRoute
   ApiPublicDownloadTokenRoute: typeof ApiPublicDownloadTokenRoute
   ApiPublicStripeWebhookRoute: typeof ApiPublicStripeWebhookRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
@@ -411,6 +424,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlbumsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/resend-download': {
+      id: '/api/public/resend-download'
+      path: '/api/public/resend-download'
+      fullPath: '/api/public/resend-download'
+      preLoaderRoute: typeof ApiPublicResendDownloadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/contact': {
       id: '/api/public/contact'
       path: '/api/public/contact'
@@ -473,6 +493,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalRefundsRoute: LegalRefundsRoute,
   LegalTermsRoute: LegalTermsRoute,
   ApiPublicContactRoute: ApiPublicContactRoute,
+  ApiPublicResendDownloadRoute: ApiPublicResendDownloadRoute,
   ApiPublicDownloadTokenRoute: ApiPublicDownloadTokenRoute,
   ApiPublicStripeWebhookRoute: ApiPublicStripeWebhookRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
