@@ -103,6 +103,7 @@ export type Database = {
           created_at: string
           currency: string
           email: string
+          email_error: string | null
           email_sent_at: string | null
           id: string
           paid_at: string | null
@@ -117,6 +118,7 @@ export type Database = {
           created_at?: string
           currency?: string
           email: string
+          email_error?: string | null
           email_sent_at?: string | null
           id?: string
           paid_at?: string | null
@@ -131,6 +133,7 @@ export type Database = {
           created_at?: string
           currency?: string
           email?: string
+          email_error?: string | null
           email_sent_at?: string | null
           id?: string
           paid_at?: string | null
@@ -162,6 +165,27 @@ export type Database = {
           id?: string
           processed_at?: string
           provider?: string
+        }
+        Relationships: []
+      }
+      rate_limits: {
+        Row: {
+          bucket: string
+          created_at: string
+          id: string
+          key: string
+        }
+        Insert: {
+          bucket: string
+          created_at?: string
+          id?: string
+          key: string
+        }
+        Update: {
+          bucket?: string
+          created_at?: string
+          id?: string
+          key?: string
         }
         Relationships: []
       }

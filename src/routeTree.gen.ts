@@ -24,6 +24,8 @@ import { Route as LegalTermsRouteImport } from './routes/legal/terms'
 import { Route as LegalRefundsRouteImport } from './routes/legal/refunds'
 import { Route as LegalPrivacyRouteImport } from './routes/legal/privacy'
 import { Route as AlbumsSlugRouteImport } from './routes/albums.$slug'
+import { Route as ApiPublicResendDownloadRouteImport } from './routes/api/public/resend-download'
+import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
@@ -105,6 +107,16 @@ const AlbumsSlugRoute = AlbumsSlugRouteImport.update({
   path: '/albums/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicResendDownloadRoute = ApiPublicResendDownloadRouteImport.update({
+  id: '/api/public/resend-download',
+  path: '/api/public/resend-download',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicContactRoute = ApiPublicContactRouteImport.update({
+  id: '/api/public/contact',
+  path: '/api/public/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LovableEmailTransactionalPreviewRoute =
   LovableEmailTransactionalPreviewRouteImport.update({
     id: '/lovable/email/transactional/preview',
@@ -148,6 +160,8 @@ export interface FileRoutesByFullPath {
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -170,6 +184,8 @@ export interface FileRoutesByTo {
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -193,6 +209,8 @@ export interface FileRoutesById {
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -217,6 +235,8 @@ export interface FileRouteTypes {
     | '/legal/privacy'
     | '/legal/refunds'
     | '/legal/terms'
+    | '/api/public/contact'
+    | '/api/public/resend-download'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -239,6 +259,8 @@ export interface FileRouteTypes {
     | '/legal/privacy'
     | '/legal/refunds'
     | '/legal/terms'
+    | '/api/public/contact'
+    | '/api/public/resend-download'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -261,6 +283,8 @@ export interface FileRouteTypes {
     | '/legal/privacy'
     | '/legal/refunds'
     | '/legal/terms'
+    | '/api/public/contact'
+    | '/api/public/resend-download'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -284,6 +308,8 @@ export interface RootRouteChildren {
   LegalPrivacyRoute: typeof LegalPrivacyRoute
   LegalRefundsRoute: typeof LegalRefundsRoute
   LegalTermsRoute: typeof LegalTermsRoute
+  ApiPublicContactRoute: typeof ApiPublicContactRoute
+  ApiPublicResendDownloadRoute: typeof ApiPublicResendDownloadRoute
   ApiPublicDownloadTokenRoute: typeof ApiPublicDownloadTokenRoute
   ApiPublicStripeWebhookRoute: typeof ApiPublicStripeWebhookRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
@@ -398,6 +424,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlbumsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/resend-download': {
+      id: '/api/public/resend-download'
+      path: '/api/public/resend-download'
+      fullPath: '/api/public/resend-download'
+      preLoaderRoute: typeof ApiPublicResendDownloadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/contact': {
+      id: '/api/public/contact'
+      path: '/api/public/contact'
+      fullPath: '/api/public/contact'
+      preLoaderRoute: typeof ApiPublicContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lovable/email/transactional/preview': {
       id: '/lovable/email/transactional/preview'
       path: '/lovable/email/transactional/preview'
@@ -452,6 +492,8 @@ const rootRouteChildren: RootRouteChildren = {
   LegalPrivacyRoute: LegalPrivacyRoute,
   LegalRefundsRoute: LegalRefundsRoute,
   LegalTermsRoute: LegalTermsRoute,
+  ApiPublicContactRoute: ApiPublicContactRoute,
+  ApiPublicResendDownloadRoute: ApiPublicResendDownloadRoute,
   ApiPublicDownloadTokenRoute: ApiPublicDownloadTokenRoute,
   ApiPublicStripeWebhookRoute: ApiPublicStripeWebhookRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
@@ -461,13 +503,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

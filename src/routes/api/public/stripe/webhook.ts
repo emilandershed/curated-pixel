@@ -7,7 +7,7 @@
  */
 import { createFileRoute } from "@tanstack/react-router";
 
-import { sendDownloadEmail } from "@/lib/order-email.server";
+import { recordEmailResult, sendDownloadEmail } from "@/lib/order-email.server";
 import { fulfilOrder, recordEventOnce } from "@/lib/orders.server";
 import { stripeWebhookSecret, verifyStripeSignature } from "@/lib/stripe.server";
 
@@ -92,11 +92,13 @@ export const Route = createFileRoute("/api/public/stripe/webhook")({
         if (!order) return new Response("Unknown order", { status: 200 });
 
         const origin = new URL(request.url).origin;
-        await sendDownloadEmail({
+        const emailResult = await sendDownloadEmail({
           origin,
           order,
           accessToken: await accessTokenFor(order.id),
         });
+        await recordEmailResult(order.id, emailResult);
+
 
         return new Response("ok", { status: 200 });
       },
