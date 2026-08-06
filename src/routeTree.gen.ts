@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as ScreenRouteImport } from './routes/screen'
 import { Route as NightRouteImport } from './routes/night'
 import { Route as NeonRouteImport } from './routes/neon'
 import { Route as LitRouteImport } from './routes/lit'
@@ -37,6 +38,11 @@ const ThankYouRoute = ThankYouRouteImport.update({
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScreenRoute = ScreenRouteImport.update({
+  id: '/screen',
+  path: '/screen',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NightRoute = NightRouteImport.update({
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/lit': typeof LitRoute
   '/neon': typeof NeonRoute
   '/night': typeof NightRoute
+  '/screen': typeof ScreenRoute
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
@@ -156,6 +163,7 @@ export interface FileRoutesByTo {
   '/lit': typeof LitRoute
   '/neon': typeof NeonRoute
   '/night': typeof NightRoute
+  '/screen': typeof ScreenRoute
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
@@ -178,6 +186,7 @@ export interface FileRoutesById {
   '/lit': typeof LitRoute
   '/neon': typeof NeonRoute
   '/night': typeof NightRoute
+  '/screen': typeof ScreenRoute
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
@@ -201,6 +210,7 @@ export interface FileRouteTypes {
     | '/lit'
     | '/neon'
     | '/night'
+    | '/screen'
     | '/shop'
     | '/thank-you'
     | '/albums/$slug'
@@ -222,6 +232,7 @@ export interface FileRouteTypes {
     | '/lit'
     | '/neon'
     | '/night'
+    | '/screen'
     | '/shop'
     | '/thank-you'
     | '/albums/$slug'
@@ -243,6 +254,7 @@ export interface FileRouteTypes {
     | '/lit'
     | '/neon'
     | '/night'
+    | '/screen'
     | '/shop'
     | '/thank-you'
     | '/albums/$slug'
@@ -265,6 +277,7 @@ export interface RootRouteChildren {
   LitRoute: typeof LitRoute
   NeonRoute: typeof NeonRoute
   NightRoute: typeof NightRoute
+  ScreenRoute: typeof ScreenRoute
   ShopRoute: typeof ShopRoute
   ThankYouRoute: typeof ThankYouRoute
   AlbumsSlugRoute: typeof AlbumsSlugRoute
@@ -292,6 +305,13 @@ declare module '@tanstack/react-router' {
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/screen': {
+      id: '/screen'
+      path: '/screen'
+      fullPath: '/screen'
+      preLoaderRoute: typeof ScreenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/night': {
@@ -425,6 +445,7 @@ const rootRouteChildren: RootRouteChildren = {
   LitRoute: LitRoute,
   NeonRoute: NeonRoute,
   NightRoute: NightRoute,
+  ScreenRoute: ScreenRoute,
   ShopRoute: ShopRoute,
   ThankYouRoute: ThankYouRoute,
   AlbumsSlugRoute: AlbumsSlugRoute,
