@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as NightRouteImport } from './routes/night'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
@@ -34,6 +35,11 @@ const ThankYouRoute = ThankYouRouteImport.update({
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NightRoute = NightRouteImport.update({
+  id: '/night',
+  path: '/night',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -114,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/night': typeof NightRoute
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
@@ -132,6 +139,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/night': typeof NightRoute
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/night': typeof NightRoute
   '/shop': typeof ShopRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
@@ -171,6 +180,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/night'
     | '/shop'
     | '/thank-you'
     | '/albums/$slug'
@@ -189,6 +199,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/night'
     | '/shop'
     | '/thank-you'
     | '/albums/$slug'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/night'
     | '/shop'
     | '/thank-you'
     | '/albums/$slug'
@@ -226,6 +238,7 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  NightRoute: typeof NightRoute
   ShopRoute: typeof ShopRoute
   ThankYouRoute: typeof ThankYouRoute
   AlbumsSlugRoute: typeof AlbumsSlugRoute
@@ -253,6 +266,13 @@ declare module '@tanstack/react-router' {
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/night': {
+      id: '/night'
+      path: '/night'
+      fullPath: '/night'
+      preLoaderRoute: typeof NightRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -362,6 +382,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  NightRoute: NightRoute,
   ShopRoute: ShopRoute,
   ThankYouRoute: ThankYouRoute,
   AlbumsSlugRoute: AlbumsSlugRoute,
@@ -377,13 +398,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
