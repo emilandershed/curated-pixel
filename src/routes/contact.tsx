@@ -125,19 +125,38 @@ function ContactPage() {
           className="mt-6 flex flex-col gap-3 sm:flex-row"
           onSubmit={async (event) => {
             event.preventDefault();
-            const form = new FormData(event.currentTarget);
+            const formEl = event.currentTarget;
+            const form = new FormData(formEl);
             const parsed = resendSchema.safeParse({ email: form.get("purchaseEmail") });
             if (!parsed.success) {
               toast.error(parsed.error.issues[0].message);
               return;
             }
             setResending(true);
-            await new Promise((r) => setTimeout(r, 400));
-            setResending(false);
-            // Deliberately identical response whether or not an order exists.
-            toast.success("If that email has an order, a fresh download link is on its way.");
-            event.currentTarget.reset();
+            try {
+              const response = await fetch("/api/public/resend-download", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(parsed.data),
+              });
+              if (!response.ok) {
+                toast.error(
+                  response.status === 429
+                    ? "Too many requests just now — please try again later, or email emil@andershed.se directly."
+                    : "We couldn't process that. Please email emil@andershed.se directly.",
+                );
+                return;
+              }
+              // Deliberately identical response whether or not an order exists.
+              toast.success("If that email has an order, a fresh download link is on its way.");
+              formEl.reset();
+            } catch {
+              toast.error("We couldn't process that. Please email emil@andershed.se directly.");
+            } finally {
+              setResending(false);
+            }
           }}
+
         >
           <Label htmlFor="purchaseEmail" className="sr-only">
             Purchase email
