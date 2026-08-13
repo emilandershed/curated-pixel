@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 import { template as downloadReadyTemplate } from './download-ready'
 import { template as contactMessageTemplate } from './contact-message'
+import { template as waitlistConfirmationTemplate } from './waitlist-confirmation'
 
 export interface TemplateEntry {
   component: ComponentType<any>
