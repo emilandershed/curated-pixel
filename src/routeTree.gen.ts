@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
+import { Route as TeeRouteImport } from './routes/tee'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ScreenRouteImport } from './routes/screen'
 import { Route as NightRouteImport } from './routes/night'
@@ -17,6 +18,7 @@ import { Route as NeonRouteImport } from './routes/neon'
 import { Route as LitRouteImport } from './routes/lit'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ComingSoonRouteImport } from './routes/coming-soon'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as BundleRouteImport } from './routes/bundle'
 import { Route as IndexRouteImport } from './routes/index'
@@ -24,6 +26,7 @@ import { Route as LegalTermsRouteImport } from './routes/legal/terms'
 import { Route as LegalRefundsRouteImport } from './routes/legal/refunds'
 import { Route as LegalPrivacyRouteImport } from './routes/legal/privacy'
 import { Route as AlbumsSlugRouteImport } from './routes/albums.$slug'
+import { Route as ApiPublicWaitlistRouteImport } from './routes/api/public/waitlist'
 import { Route as ApiPublicResendDownloadRouteImport } from './routes/api/public/resend-download'
 import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
@@ -35,6 +38,11 @@ import { Route as ApiPublicDownloadTokenRouteImport } from './routes/api/public/
 const ThankYouRoute = ThankYouRouteImport.update({
   id: '/thank-you',
   path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeeRoute = TeeRouteImport.update({
+  id: '/tee',
+  path: '/tee',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -72,6 +80,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComingSoonRoute = ComingSoonRouteImport.update({
+  id: '/coming-soon',
+  path: '/coming-soon',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CheckoutRoute = CheckoutRouteImport.update({
   id: '/checkout',
   path: '/checkout',
@@ -105,6 +118,11 @@ const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
 const AlbumsSlugRoute = AlbumsSlugRouteImport.update({
   id: '/albums/$slug',
   path: '/albums/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicWaitlistRoute = ApiPublicWaitlistRouteImport.update({
+  id: '/api/public/waitlist',
+  path: '/api/public/waitlist',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicResendDownloadRoute = ApiPublicResendDownloadRouteImport.update({
@@ -148,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bundle': typeof BundleRoute
   '/checkout': typeof CheckoutRoute
+  '/coming-soon': typeof ComingSoonRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/lit': typeof LitRoute
@@ -155,6 +174,7 @@ export interface FileRoutesByFullPath {
   '/night': typeof NightRoute
   '/screen': typeof ScreenRoute
   '/shop': typeof ShopRoute
+  '/tee': typeof TeeRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
   '/legal/privacy': typeof LegalPrivacyRoute
@@ -162,6 +182,7 @@ export interface FileRoutesByFullPath {
   '/legal/terms': typeof LegalTermsRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
+  '/api/public/waitlist': typeof ApiPublicWaitlistRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -172,6 +193,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bundle': typeof BundleRoute
   '/checkout': typeof CheckoutRoute
+  '/coming-soon': typeof ComingSoonRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/lit': typeof LitRoute
@@ -179,6 +201,7 @@ export interface FileRoutesByTo {
   '/night': typeof NightRoute
   '/screen': typeof ScreenRoute
   '/shop': typeof ShopRoute
+  '/tee': typeof TeeRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
   '/legal/privacy': typeof LegalPrivacyRoute
@@ -186,6 +209,7 @@ export interface FileRoutesByTo {
   '/legal/terms': typeof LegalTermsRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
+  '/api/public/waitlist': typeof ApiPublicWaitlistRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -197,6 +221,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/bundle': typeof BundleRoute
   '/checkout': typeof CheckoutRoute
+  '/coming-soon': typeof ComingSoonRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/lit': typeof LitRoute
@@ -204,6 +229,7 @@ export interface FileRoutesById {
   '/night': typeof NightRoute
   '/screen': typeof ScreenRoute
   '/shop': typeof ShopRoute
+  '/tee': typeof TeeRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
   '/legal/privacy': typeof LegalPrivacyRoute
@@ -211,6 +237,7 @@ export interface FileRoutesById {
   '/legal/terms': typeof LegalTermsRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
+  '/api/public/waitlist': typeof ApiPublicWaitlistRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -223,6 +250,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bundle'
     | '/checkout'
+    | '/coming-soon'
     | '/contact'
     | '/faq'
     | '/lit'
@@ -230,6 +258,7 @@ export interface FileRouteTypes {
     | '/night'
     | '/screen'
     | '/shop'
+    | '/tee'
     | '/thank-you'
     | '/albums/$slug'
     | '/legal/privacy'
@@ -237,6 +266,7 @@ export interface FileRouteTypes {
     | '/legal/terms'
     | '/api/public/contact'
     | '/api/public/resend-download'
+    | '/api/public/waitlist'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -247,6 +277,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bundle'
     | '/checkout'
+    | '/coming-soon'
     | '/contact'
     | '/faq'
     | '/lit'
@@ -254,6 +285,7 @@ export interface FileRouteTypes {
     | '/night'
     | '/screen'
     | '/shop'
+    | '/tee'
     | '/thank-you'
     | '/albums/$slug'
     | '/legal/privacy'
@@ -261,6 +293,7 @@ export interface FileRouteTypes {
     | '/legal/terms'
     | '/api/public/contact'
     | '/api/public/resend-download'
+    | '/api/public/waitlist'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -271,6 +304,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bundle'
     | '/checkout'
+    | '/coming-soon'
     | '/contact'
     | '/faq'
     | '/lit'
@@ -278,6 +312,7 @@ export interface FileRouteTypes {
     | '/night'
     | '/screen'
     | '/shop'
+    | '/tee'
     | '/thank-you'
     | '/albums/$slug'
     | '/legal/privacy'
@@ -285,6 +320,7 @@ export interface FileRouteTypes {
     | '/legal/terms'
     | '/api/public/contact'
     | '/api/public/resend-download'
+    | '/api/public/waitlist'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -296,6 +332,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BundleRoute: typeof BundleRoute
   CheckoutRoute: typeof CheckoutRoute
+  ComingSoonRoute: typeof ComingSoonRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   LitRoute: typeof LitRoute
@@ -303,6 +340,7 @@ export interface RootRouteChildren {
   NightRoute: typeof NightRoute
   ScreenRoute: typeof ScreenRoute
   ShopRoute: typeof ShopRoute
+  TeeRoute: typeof TeeRoute
   ThankYouRoute: typeof ThankYouRoute
   AlbumsSlugRoute: typeof AlbumsSlugRoute
   LegalPrivacyRoute: typeof LegalPrivacyRoute
@@ -310,6 +348,7 @@ export interface RootRouteChildren {
   LegalTermsRoute: typeof LegalTermsRoute
   ApiPublicContactRoute: typeof ApiPublicContactRoute
   ApiPublicResendDownloadRoute: typeof ApiPublicResendDownloadRoute
+  ApiPublicWaitlistRoute: typeof ApiPublicWaitlistRoute
   ApiPublicDownloadTokenRoute: typeof ApiPublicDownloadTokenRoute
   ApiPublicStripeWebhookRoute: typeof ApiPublicStripeWebhookRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
@@ -324,6 +363,13 @@ declare module '@tanstack/react-router' {
       path: '/thank-you'
       fullPath: '/thank-you'
       preLoaderRoute: typeof ThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tee': {
+      id: '/tee'
+      path: '/tee'
+      fullPath: '/tee'
+      preLoaderRoute: typeof TeeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -375,6 +421,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/coming-soon': {
+      id: '/coming-soon'
+      path: '/coming-soon'
+      fullPath: '/coming-soon'
+      preLoaderRoute: typeof ComingSoonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/checkout': {
       id: '/checkout'
       path: '/checkout'
@@ -422,6 +475,13 @@ declare module '@tanstack/react-router' {
       path: '/albums/$slug'
       fullPath: '/albums/$slug'
       preLoaderRoute: typeof AlbumsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/waitlist': {
+      id: '/api/public/waitlist'
+      path: '/api/public/waitlist'
+      fullPath: '/api/public/waitlist'
+      preLoaderRoute: typeof ApiPublicWaitlistRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/resend-download': {
@@ -480,6 +540,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BundleRoute: BundleRoute,
   CheckoutRoute: CheckoutRoute,
+  ComingSoonRoute: ComingSoonRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   LitRoute: LitRoute,
@@ -487,6 +548,7 @@ const rootRouteChildren: RootRouteChildren = {
   NightRoute: NightRoute,
   ScreenRoute: ScreenRoute,
   ShopRoute: ShopRoute,
+  TeeRoute: TeeRoute,
   ThankYouRoute: ThankYouRoute,
   AlbumsSlugRoute: AlbumsSlugRoute,
   LegalPrivacyRoute: LegalPrivacyRoute,
@@ -494,6 +556,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalTermsRoute: LegalTermsRoute,
   ApiPublicContactRoute: ApiPublicContactRoute,
   ApiPublicResendDownloadRoute: ApiPublicResendDownloadRoute,
+  ApiPublicWaitlistRoute: ApiPublicWaitlistRoute,
   ApiPublicDownloadTokenRoute: ApiPublicDownloadTokenRoute,
   ApiPublicStripeWebhookRoute: ApiPublicStripeWebhookRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
