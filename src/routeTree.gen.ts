@@ -24,6 +24,7 @@ import { Route as LegalTermsRouteImport } from './routes/legal/terms'
 import { Route as LegalRefundsRouteImport } from './routes/legal/refunds'
 import { Route as LegalPrivacyRouteImport } from './routes/legal/privacy'
 import { Route as AlbumsSlugRouteImport } from './routes/albums.$slug'
+import { Route as ApiPublicWaitlistRouteImport } from './routes/api/public/waitlist'
 import { Route as ApiPublicResendDownloadRouteImport } from './routes/api/public/resend-download'
 import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
@@ -107,6 +108,11 @@ const AlbumsSlugRoute = AlbumsSlugRouteImport.update({
   path: '/albums/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicWaitlistRoute = ApiPublicWaitlistRouteImport.update({
+  id: '/api/public/waitlist',
+  path: '/api/public/waitlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicResendDownloadRoute = ApiPublicResendDownloadRouteImport.update({
   id: '/api/public/resend-download',
   path: '/api/public/resend-download',
@@ -162,6 +168,7 @@ export interface FileRoutesByFullPath {
   '/legal/terms': typeof LegalTermsRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
+  '/api/public/waitlist': typeof ApiPublicWaitlistRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -186,6 +193,7 @@ export interface FileRoutesByTo {
   '/legal/terms': typeof LegalTermsRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
+  '/api/public/waitlist': typeof ApiPublicWaitlistRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -211,6 +219,7 @@ export interface FileRoutesById {
   '/legal/terms': typeof LegalTermsRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/api/public/resend-download': typeof ApiPublicResendDownloadRoute
+  '/api/public/waitlist': typeof ApiPublicWaitlistRoute
   '/api/public/download/$token': typeof ApiPublicDownloadTokenRoute
   '/api/public/stripe/webhook': typeof ApiPublicStripeWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -237,6 +246,7 @@ export interface FileRouteTypes {
     | '/legal/terms'
     | '/api/public/contact'
     | '/api/public/resend-download'
+    | '/api/public/waitlist'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -261,6 +271,7 @@ export interface FileRouteTypes {
     | '/legal/terms'
     | '/api/public/contact'
     | '/api/public/resend-download'
+    | '/api/public/waitlist'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -285,6 +296,7 @@ export interface FileRouteTypes {
     | '/legal/terms'
     | '/api/public/contact'
     | '/api/public/resend-download'
+    | '/api/public/waitlist'
     | '/api/public/download/$token'
     | '/api/public/stripe/webhook'
     | '/lovable/email/auth/preview'
@@ -310,6 +322,7 @@ export interface RootRouteChildren {
   LegalTermsRoute: typeof LegalTermsRoute
   ApiPublicContactRoute: typeof ApiPublicContactRoute
   ApiPublicResendDownloadRoute: typeof ApiPublicResendDownloadRoute
+  ApiPublicWaitlistRoute: typeof ApiPublicWaitlistRoute
   ApiPublicDownloadTokenRoute: typeof ApiPublicDownloadTokenRoute
   ApiPublicStripeWebhookRoute: typeof ApiPublicStripeWebhookRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
@@ -424,6 +437,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlbumsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/waitlist': {
+      id: '/api/public/waitlist'
+      path: '/api/public/waitlist'
+      fullPath: '/api/public/waitlist'
+      preLoaderRoute: typeof ApiPublicWaitlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/resend-download': {
       id: '/api/public/resend-download'
       path: '/api/public/resend-download'
@@ -494,6 +514,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalTermsRoute: LegalTermsRoute,
   ApiPublicContactRoute: ApiPublicContactRoute,
   ApiPublicResendDownloadRoute: ApiPublicResendDownloadRoute,
+  ApiPublicWaitlistRoute: ApiPublicWaitlistRoute,
   ApiPublicDownloadTokenRoute: ApiPublicDownloadTokenRoute,
   ApiPublicStripeWebhookRoute: ApiPublicStripeWebhookRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
