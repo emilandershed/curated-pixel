@@ -18,6 +18,7 @@ import { Route as NeonRouteImport } from './routes/neon'
 import { Route as LitRouteImport } from './routes/lit'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ComingSoonRouteImport } from './routes/coming-soon'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as BundleRouteImport } from './routes/bundle'
 import { Route as IndexRouteImport } from './routes/index'
@@ -77,6 +78,11 @@ const FaqRoute = FaqRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComingSoonRoute = ComingSoonRouteImport.update({
+  id: '/coming-soon',
+  path: '/coming-soon',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -160,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bundle': typeof BundleRoute
   '/checkout': typeof CheckoutRoute
+  '/coming-soon': typeof ComingSoonRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/lit': typeof LitRoute
@@ -186,6 +193,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bundle': typeof BundleRoute
   '/checkout': typeof CheckoutRoute
+  '/coming-soon': typeof ComingSoonRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/lit': typeof LitRoute
@@ -213,6 +221,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/bundle': typeof BundleRoute
   '/checkout': typeof CheckoutRoute
+  '/coming-soon': typeof ComingSoonRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/lit': typeof LitRoute
@@ -241,6 +250,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bundle'
     | '/checkout'
+    | '/coming-soon'
     | '/contact'
     | '/faq'
     | '/lit'
@@ -267,6 +277,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bundle'
     | '/checkout'
+    | '/coming-soon'
     | '/contact'
     | '/faq'
     | '/lit'
@@ -293,6 +304,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bundle'
     | '/checkout'
+    | '/coming-soon'
     | '/contact'
     | '/faq'
     | '/lit'
@@ -320,6 +332,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BundleRoute: typeof BundleRoute
   CheckoutRoute: typeof CheckoutRoute
+  ComingSoonRoute: typeof ComingSoonRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   LitRoute: typeof LitRoute
@@ -406,6 +419,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coming-soon': {
+      id: '/coming-soon'
+      path: '/coming-soon'
+      fullPath: '/coming-soon'
+      preLoaderRoute: typeof ComingSoonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -520,6 +540,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BundleRoute: BundleRoute,
   CheckoutRoute: CheckoutRoute,
+  ComingSoonRoute: ComingSoonRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   LitRoute: LitRoute,
