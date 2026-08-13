@@ -52,6 +52,7 @@ export async function startCheckout(input: {
           },
         },
       })),
+      after_expiration: { recovery: { enabled: true, allow_promotion_codes: false } },
     },
   });
 
