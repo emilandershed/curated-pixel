@@ -20,3 +20,20 @@ export function vanityRedirect(albumSlug: string, utmContent: string): Response 
     },
   });
 }
+
+/**
+ * Generic campaign redirect for vanity paths that point somewhere other than an
+ * album page (e.g. /tee -> /coming-soon).
+ */
+export function campaignRedirect(
+  path: string,
+  params: Record<string, string>,
+): Response {
+  return new Response(null, {
+    status: 302,
+    headers: {
+      location: `${path}?${new URLSearchParams(params).toString()}`,
+      "cache-control": "no-store",
+    },
+  });
+}

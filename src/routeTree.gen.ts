@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
+import { Route as TeeRouteImport } from './routes/tee'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ScreenRouteImport } from './routes/screen'
 import { Route as NightRouteImport } from './routes/night'
@@ -36,6 +37,11 @@ import { Route as ApiPublicDownloadTokenRouteImport } from './routes/api/public/
 const ThankYouRoute = ThankYouRouteImport.update({
   id: '/thank-you',
   path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeeRoute = TeeRouteImport.update({
+  id: '/tee',
+  path: '/tee',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -161,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/night': typeof NightRoute
   '/screen': typeof ScreenRoute
   '/shop': typeof ShopRoute
+  '/tee': typeof TeeRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
   '/legal/privacy': typeof LegalPrivacyRoute
@@ -186,6 +193,7 @@ export interface FileRoutesByTo {
   '/night': typeof NightRoute
   '/screen': typeof ScreenRoute
   '/shop': typeof ShopRoute
+  '/tee': typeof TeeRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
   '/legal/privacy': typeof LegalPrivacyRoute
@@ -212,6 +220,7 @@ export interface FileRoutesById {
   '/night': typeof NightRoute
   '/screen': typeof ScreenRoute
   '/shop': typeof ShopRoute
+  '/tee': typeof TeeRoute
   '/thank-you': typeof ThankYouRoute
   '/albums/$slug': typeof AlbumsSlugRoute
   '/legal/privacy': typeof LegalPrivacyRoute
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/night'
     | '/screen'
     | '/shop'
+    | '/tee'
     | '/thank-you'
     | '/albums/$slug'
     | '/legal/privacy'
@@ -264,6 +274,7 @@ export interface FileRouteTypes {
     | '/night'
     | '/screen'
     | '/shop'
+    | '/tee'
     | '/thank-you'
     | '/albums/$slug'
     | '/legal/privacy'
@@ -289,6 +300,7 @@ export interface FileRouteTypes {
     | '/night'
     | '/screen'
     | '/shop'
+    | '/tee'
     | '/thank-you'
     | '/albums/$slug'
     | '/legal/privacy'
@@ -315,6 +327,7 @@ export interface RootRouteChildren {
   NightRoute: typeof NightRoute
   ScreenRoute: typeof ScreenRoute
   ShopRoute: typeof ShopRoute
+  TeeRoute: typeof TeeRoute
   ThankYouRoute: typeof ThankYouRoute
   AlbumsSlugRoute: typeof AlbumsSlugRoute
   LegalPrivacyRoute: typeof LegalPrivacyRoute
@@ -337,6 +350,13 @@ declare module '@tanstack/react-router' {
       path: '/thank-you'
       fullPath: '/thank-you'
       preLoaderRoute: typeof ThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tee': {
+      id: '/tee'
+      path: '/tee'
+      fullPath: '/tee'
+      preLoaderRoute: typeof TeeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -507,6 +527,7 @@ const rootRouteChildren: RootRouteChildren = {
   NightRoute: NightRoute,
   ScreenRoute: ScreenRoute,
   ShopRoute: ShopRoute,
+  TeeRoute: TeeRoute,
   ThankYouRoute: ThankYouRoute,
   AlbumsSlugRoute: AlbumsSlugRoute,
   LegalPrivacyRoute: LegalPrivacyRoute,
