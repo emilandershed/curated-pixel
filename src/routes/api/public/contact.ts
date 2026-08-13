@@ -50,13 +50,30 @@ export const Route = createFileRoute("/api/public/contact")({
         const { name, email, message } = parsed.data;
 
         try {
-          await sendTemplateEmail("contact-message", "", {
+          const result = await sendTemplateEmail("contact-message", "", {
             templateData: { name, email, message },
             replyTo: email,
           });
+
+          if (!result.sent) {
+            console.error("[contact] email suppressed or failed", result.reason);
+            return Response.json(
+              {
+                error:
+                  "We could not send your message right now. Please email us directly at emil@andershed.se and we will get back to you.",
+              },
+              { status: 502 },
+            );
+          }
         } catch (error) {
           console.error("[contact] send failed", error);
-          return Response.json({ error: "Could not send message" }, { status: 502 });
+          return Response.json(
+            {
+              error:
+                "We could not send your message right now. Please email us directly at emil@andershed.se and we will get back to you.",
+            },
+            { status: 502 },
+          );
         }
 
         return Response.json({ ok: true }, { status: 200 });
