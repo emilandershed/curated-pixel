@@ -19,4 +19,5 @@ export interface TemplateEntry {
 export const TEMPLATES: Record<string, TemplateEntry> = {
   'download-ready': downloadReadyTemplate,
   'contact-message': contactMessageTemplate,
+  'waitlist-confirmation': waitlistConfirmationTemplate,
 }
