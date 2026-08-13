@@ -41,19 +41,19 @@ export async function startCheckout(input: {
       cancel_url: `${input.origin}/checkout?cancelled=1`,
       metadata: { order_id: order.id },
       payment_intent_data: { metadata: { order_id: order.id } },
-        line_items: resolved.map((line) => ({
-          quantity: 1,
-          price_data: {
-            currency,
-            unit_amount: line.priceCents,
-            product_data: {
-              name: line.title,
-              metadata: { product_id: line.productId, kind: line.kind },
-            },
+      line_items: resolved.map((line) => ({
+        quantity: 1,
+        price_data: {
+          currency,
+          unit_amount: line.priceCents,
+          product_data: {
+            name: line.title,
+            metadata: { product_id: line.productId, kind: line.kind },
           },
-        })),
-        after_expiration: { recovery: { enabled: true, allow_promotion_codes: false } },
-      },
+        },
+      })),
+      after_expiration: { recovery: { enabled: true, allow_promotion_codes: false } },
+    },
   });
 
   await attachCheckoutSession(order.id, session.id);
