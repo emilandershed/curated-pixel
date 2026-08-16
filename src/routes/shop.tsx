@@ -60,7 +60,55 @@ function Shop() {
         intro={`${albums.length} ${albums.length === 1 ? "album" : "albums"}, ${totalWallpaperCount} wallpapers. Each purchase includes both the iPhone and MacBook format.`}
       />
 
-      <div className="mt-10 flex items-center justify-between gap-4 border-y border-border py-4">
+      {/* Lead offer — the complete pack */}
+      {BUNDLE_AVAILABLE && (
+        <Reveal className="mt-12">
+          <div className="border border-foreground/15 bg-secondary/50 p-6 shadow-frame sm:p-10">
+            <p className="eyebrow">Best value</p>
+            <h2 className="font-display mt-3 text-4xl leading-[1.05] sm:text-5xl">
+              {bundle.title}
+            </h2>
+
+            <div className="mt-5 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+              <span className="font-display text-4xl tabular-nums sm:text-5xl">
+                {formatPrice(bundle.priceCents)}
+              </span>
+              <span className="text-sm tabular-nums text-muted-foreground line-through">
+                {formatPrice(catalogueTotalCents)}
+              </span>
+              <span className="bg-foreground px-2 py-1 text-[11px] uppercase tracking-[0.14em] text-background">
+                Save {formatPrice(bundleSavingsCents)} · {bundleSavingsPercent}%
+              </span>
+            </div>
+
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground">
+              All {albums.length} albums · {totalWallpaperCount} wallpapers · every frame in both
+              iPhone and MacBook format.
+            </p>
+
+            <Button asChild size="lg" className="mt-7 w-full sm:w-auto">
+              <Link to="/bundle">Get the complete pack</Link>
+            </Button>
+
+            <div className="mt-8 grid grid-cols-4 gap-2">
+              {albums.slice(0, 8).map((album) => (
+                <div key={album.id} className="overflow-hidden shadow-frame">
+                  <PreviewTile
+                    gradient={album.gradient}
+                    previewSrc={album.coverSrc ?? null}
+                    alt={album.title}
+                    ratio="square"
+                    watermark={false}
+                    eager
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      )}
+
+      <div className="mt-14 flex items-center justify-between gap-4 border-y border-border py-4">
         <p className="text-sm text-muted-foreground">
           {albums.length} {albums.length === 1 ? "album" : "albums"}
         </p>
@@ -77,44 +125,14 @@ function Shop() {
         </Select>
       </div>
 
-      {/* Bundle card */}
-      {BUNDLE_AVAILABLE && (
-      <Reveal className="mt-12">
-        <div className="grid items-center gap-8 border border-border bg-secondary/40 p-6 sm:grid-cols-[1fr_1.1fr] sm:p-8">
-          <div>
-            <p className="eyebrow">Best value</p>
-            <h2 className="font-display mt-2 text-3xl">{bundle.title}</h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{bundle.blurb}</p>
-            <div className="mt-5 flex items-baseline gap-3">
-              <span className="font-display text-3xl tabular-nums">
-                {formatPrice(bundle.priceCents)}
-              </span>
-              <span className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
-                Save {bundleSavingsPercent}%
-              </span>
-            </div>
-            <Button asChild className="mt-6">
-              <Link to="/bundle">View the bundle</Link>
-            </Button>
-          </div>
-          <div className="grid grid-cols-4 gap-2">
-            {albums.slice(0, 8).map((album) => (
-              <div key={album.id} className="overflow-hidden shadow-frame">
-                <PreviewTile gradient={album.gradient} previewSrc={album.coverSrc ?? null} alt={album.title} ratio="square" watermark={false} eager />
-              </div>
-            ))}
-          </div>
-        </div>
-      </Reveal>
-      )}
-
-      <div className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
         {sorted.map((album, i) => (
           <Reveal key={album.id} delay={(i % 3) * 70}>
             <AlbumCard album={album} index={i} />
           </Reveal>
         ))}
       </div>
+
     </div>
   );
 }
