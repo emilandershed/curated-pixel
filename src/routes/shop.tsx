@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/select";
 import { brand, formatPrice } from "@/config/brand";
 import { BUNDLE_AVAILABLE, albums, bundle, totalWallpaperCount } from "@/config/products";
-import { bundleSavingsPercent } from "@/lib/pricing";
+import { bundleSavingsCents, bundleSavingsPercent, catalogueTotalCents } from "@/lib/pricing";
 
 const title = `Shop all wallpaper albums — ${brand.name}`;
 const description = `Browse ${albums.length} curated wallpaper ${albums.length === 1 ? "album" : "albums"} and ${totalWallpaperCount} frames, each delivered in iPhone 9:16 and MacBook 16:9 format.`;
