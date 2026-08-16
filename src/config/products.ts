@@ -343,7 +343,7 @@ const seeds: AlbumSeed[] = [
     blurb: "What fits in the bag matters. What happens between shots matters more.",
     description:
       "Aerial studies of the course itself — fairways, bunkers, water and the quiet figures moving through them. Each piece composed in thick, sculpted colour to sit calmly behind your icons.",
-    priceCents: 399,
+    priceCents: 499,
     compareAtCents: 899,
     wallpaperCount: 10,
     featured: false,
@@ -365,7 +365,7 @@ const seeds: AlbumSeed[] = [
     blurb: "The last light of the round, held in thick paint.",
     description:
       "Ten studies of the hour when the course empties: greens, flagsticks and burnished surfaces built up in heavy impasto, then lit from one low angle. Deep green and warm gold, kept intentionally quiet in the centre so widgets and icons stay readable — delivered in both 9:16 for iPhone and 16:9 for MacBook.",
-    priceCents: 399,
+    priceCents: 499,
     compareAtCents: 899,
     wallpaperCount: 10,
     featured: false,
@@ -386,7 +386,7 @@ const seeds: AlbumSeed[] = [
     blurb: "One night. One morning. No witnesses.",
     description:
       "One figure, one night, ten frames: the alarm at 4:44, the empty street in the rain, the empty gym, the walk home at sunrise. Shot dark and quiet with a single light source in every frame. Each wallpaper carries one line of the kind you say to yourself — and every one also comes without the words, so you can keep the mood without the message. Composed around the lock screen clock, so nothing that matters sits behind it.",
-    priceCents: 399,
+    priceCents: 499,
     compareAtCents: 899,
     wallpaperCount: 10,
     featured: false,
@@ -407,7 +407,7 @@ const seeds: AlbumSeed[] = [
     blurb: "Everything closed. Everything still lit.",
     description:
       "Ten empty places after closing time: a diner still lit with nobody in it, a motel sign burning over a dark car park, a road going straight out of frame. Each frame is built on one neon colour and the wet ground that mirrors it, everything else in charcoal and black. No people, no words — just the light. Delivered in both iPhone and desktop format.",
-    priceCents: 399,
+    priceCents: 499,
     compareAtCents: 899,
     wallpaperCount: 10,
     featured: false,
@@ -459,7 +459,7 @@ export const bundle = {
   blurb: "All four albums together, both formats, one price.",
   description:
     "Every album in the store — Tour Kit, Golf Hour, While They Sleep and West Coast Night — in iPhone and MacBook format. Forty wallpapers, one purchase, instant download.",
-  priceCents: 799,
+  priceCents: 1199,
   gradient: ["oklch(0.9 0.03 80)", "oklch(0.6 0.06 250)", "oklch(0.2 0.04 270)"] as [
     string,
     string,
